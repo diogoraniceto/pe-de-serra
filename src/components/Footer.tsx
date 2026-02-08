@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Instagram, MessageCircle } from "lucide-react";
+import logo from "@/assets/logo-pe-de-serra.jpg";
 
 const Footer = () => {
   return (
@@ -8,9 +9,13 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Brand */}
           <div>
-            <h3 className="font-script text-3xl mb-4 text-serra-gold">Pé de Serra</h3>
+            <img 
+              src={logo} 
+              alt="Pé de Serra - Torra de Café" 
+              className="h-16 w-auto mb-4"
+            />
             <p className="font-body text-primary-foreground/70 text-sm leading-relaxed">
-              Cafés especiais das montanhas de Minas Gerais. Do produtor familiar à sua xícara.
+              Cafés especiais das montanhas de Minas Gerais e Espírito Santo. Do produtor familiar à sua xícara.
             </p>
           </div>
 
