@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import producerBw from "@/assets/producer-bw.jpg";
+import produtoresBw from "@/assets/produtores-bw.png";
 
 const ProducerSpotlight = () => {
   return (
@@ -14,8 +14,8 @@ const ProducerSpotlight = () => {
           className="relative"
         >
           <img
-            src={producerBw}
-            alt="Produtor de café familiar"
+            src={produtoresBw}
+            alt="Produtores de café familiar"
             className="w-full h-[500px] object-cover grayscale contrast-125"
           />
           <div className="absolute -top-4 -right-4 w-full h-full border-2 border-serra-gold -z-10" />
@@ -35,13 +35,13 @@ const ProducerSpotlight = () => {
           </h2>
           <p className="font-body text-muted-foreground leading-relaxed mb-6">
             Por trás de cada grão, existe uma família. Trabalhamos diretamente com produtores
-            familiares das montanhas de Minas Gerais, valorizando o conhecimento passado de geração
+            familiares das montanhas de Minas Gerais e Espírito Santo, valorizando o conhecimento passado de geração
             em geração.
           </p>
           <p className="font-body text-muted-foreground leading-relaxed mb-8">
-            Nossos parceiros cultivam café com práticas sustentáveis, respeitando a terra e as
-            tradições. Cada saca que compramos fortalece essas comunidades e preserva a cultura
-            cafeeira da região.
+            Nossos parceiros — Emílio Horst de Iúna, Eduardo Cerqueira de Manhuaçu e Gabriel Protázio 
+            de Forquilha do Rio — cultivam café com práticas sustentáveis, respeitando a terra e as
+            tradições.
           </p>
           <Link
             to="/sobre"

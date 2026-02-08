@@ -4,15 +4,28 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import { coffees } from "@/data/products";
-import coffeeProduct from "@/assets/coffee-product.jpg";
 
-type Region = "Todas" | "Caparaó" | "Matas de Minas";
+type Region = "Todas" | "Espírito Santo" | "Minas Gerais";
+
+const colorClasses = {
+  amarelo: "bg-yellow-500",
+  verde: "bg-green-600",
+  rosa: "bg-pink-400",
+  roxo: "bg-purple-600",
+};
 
 const CafesPage = () => {
   const [filter, setFilter] = useState<Region>("Todas");
-  const filters: Region[] = ["Todas", "Caparaó", "Matas de Minas"];
+  const filters: Region[] = ["Todas", "Espírito Santo", "Minas Gerais"];
 
-  const filtered = filter === "Todas" ? coffees : coffees.filter((c) => c.region === filter);
+  const filtered = filter === "Todas" 
+    ? coffees 
+    : coffees.filter((c) => {
+        if (filter === "Espírito Santo") {
+          return c.region.includes("ES");
+        }
+        return c.region.includes("MG");
+      });
 
   return (
     <div className="font-body">
@@ -28,14 +41,15 @@ const CafesPage = () => {
             nossos cafés
           </h1>
           <p className="font-body text-primary-foreground/70 max-w-xl mx-auto">
-            Conheça nossa seleção de cafés especiais, torrados artesanalmente para revelar o melhor de cada origem.
+            Conheça nossa seleção de cafés especiais das montanhas do Espírito Santo e Minas Gerais, 
+            torrados artesanalmente para revelar o melhor de cada origem.
           </p>
         </div>
       </section>
 
       {/* Filters */}
       <section className="bg-background py-8 px-6 border-b border-border">
-        <div className="max-w-7xl mx-auto flex justify-center gap-4">
+        <div className="max-w-7xl mx-auto flex justify-center gap-4 flex-wrap">
           {filters.map((f) => (
             <button
               key={f}
@@ -63,20 +77,21 @@ const CafesPage = () => {
               transition={{ delay: i * 0.1 }}
               className="border border-border hover:border-serra-gold transition-all duration-300 group"
             >
-              <div className="overflow-hidden">
-                <img
-                  src={coffeeProduct}
-                  alt={coffee.name}
-                  className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
-                />
+              {/* Color block header */}
+              <div className={`h-48 ${colorClasses[coffee.color]} flex items-center justify-center`}>
+                <div className="text-center text-white">
+                  <p className="font-blackletter text-3xl mb-1">{coffee.name}</p>
+                  <p className="font-body text-xs uppercase tracking-widest opacity-80">{coffee.variety}</p>
+                </div>
               </div>
+              
               <div className="p-6">
-                <p className="font-body text-xs uppercase tracking-wider text-serra-gold mb-2">
+                <p className="font-body text-xs uppercase tracking-wider text-serra-gold mb-1">
                   {coffee.region} {coffee.score && `• ${coffee.score} pts`}
                 </p>
-                <h3 className="font-blackletter text-2xl text-foreground mb-3">
-                  {coffee.name}
-                </h3>
+                <p className="font-body text-[10px] uppercase tracking-wider text-muted-foreground mb-3">
+                  {coffee.producer} • {coffee.process} • {coffee.altitude}
+                </p>
                 <p className="font-body text-sm text-muted-foreground leading-relaxed mb-4">
                   {coffee.description}
                 </p>

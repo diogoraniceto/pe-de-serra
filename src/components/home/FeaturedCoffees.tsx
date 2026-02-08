@@ -1,6 +1,12 @@
 import { motion } from "framer-motion";
 import { coffees } from "@/data/products";
-import coffeeProduct from "@/assets/coffee-product.jpg";
+
+const colorClasses = {
+  amarelo: "bg-yellow-500",
+  verde: "bg-green-600",
+  rosa: "bg-pink-400",
+  roxo: "bg-purple-600",
+};
 
 const FeaturedCoffees = () => {
   const featured = coffees.slice(0, 2);
@@ -34,22 +40,28 @@ const FeaturedCoffees = () => {
                 i % 2 === 1 ? "lg:direction-rtl" : ""
               }`}
             >
-              <div className={i % 2 === 1 ? "lg:order-2" : ""}>
-                <img
-                  src={coffeeProduct}
-                  alt={coffee.name}
-                  className="w-full h-[450px] object-cover"
-                />
+              <div className={`relative ${i % 2 === 1 ? "lg:order-2" : ""}`}>
+                {/* Color block placeholder representing the package */}
+                <div className={`w-full h-[450px] ${colorClasses[coffee.color]} flex items-center justify-center`}>
+                  <div className="text-center text-white">
+                    <p className="font-blackletter text-4xl mb-2">{coffee.name}</p>
+                    <p className="font-body text-sm uppercase tracking-widest opacity-80">{coffee.variety}</p>
+                  </div>
+                </div>
+                <div className="absolute -bottom-4 -right-4 w-full h-full border-2 border-serra-gold -z-10" />
               </div>
 
               <div className={i % 2 === 1 ? "lg:order-1" : ""}>
                 <p className="font-body text-serra-gold text-xs uppercase tracking-[0.3em] mb-2">
                   {coffee.region} {coffee.score && `• ${coffee.score} pts`}
                 </p>
-                <h3 className="font-blackletter text-4xl text-foreground mb-4">
+                <h3 className="font-blackletter text-4xl text-foreground mb-2">
                   {coffee.name}
                 </h3>
-                <div className="flex gap-3 mb-6">
+                <p className="font-body text-sm text-muted-foreground mb-4">
+                  Produtor: {coffee.producer} • {coffee.process} • {coffee.altitude}
+                </p>
+                <div className="flex gap-3 mb-6 flex-wrap">
                   {coffee.notes.map((note) => (
                     <span
                       key={note}
