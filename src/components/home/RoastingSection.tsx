@@ -5,11 +5,17 @@ import roasting from "@/assets/roasting.jpg";
 const RoastingSection = () => {
   return (
     <section className="relative py-24 overflow-hidden">
-      {/* Background image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${roasting})` }}
-      >
+      {/* Background video */}
+      <div className="absolute inset-0">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="https://uaxraccxizldcvuwjitt.supabase.co/storage/v1/object/public/app/0208.mp4" type="video/mp4" />
+        </video>
         <div className="absolute inset-0 bg-serra-black/70" />
       </div>
 
