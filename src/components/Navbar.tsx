@@ -38,7 +38,7 @@ const Navbar = () => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-serra-green/95 backdrop-blur-md shadow-lg"
+          ? "bg-serra-black/80 backdrop-blur-md"
           : "bg-transparent"
       }`}
     >
@@ -68,7 +68,7 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="bg-serra-green/95 backdrop-blur-md overflow-hidden"
+            className="bg-serra-black/95 backdrop-blur-md overflow-hidden"
           >
             <div className="px-6 py-4 flex flex-col gap-4">
               {navLinks.map((link) =>
