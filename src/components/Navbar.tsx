@@ -51,36 +51,9 @@ const Navbar = () => {
           />
         </Link>
 
-        {/* Desktop */}
-        <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) =>
-            link.href.startsWith("#") ? (
-              <button
-                key={link.label}
-                onClick={() => handleClick(link.href)}
-                className="text-primary-foreground/80 hover:text-serra-gold transition-colors text-sm font-body uppercase tracking-widest"
-              >
-                {link.label}
-              </button>
-            ) : (
-              <Link
-                key={link.label}
-                to={link.href}
-                className={`text-sm font-body uppercase tracking-widest transition-colors ${
-                  location.pathname === link.href
-                    ? "text-serra-gold"
-                    : "text-primary-foreground/80 hover:text-serra-gold"
-                }`}
-              >
-                {link.label}
-              </Link>
-            )
-          )}
-        </div>
-
-        {/* Mobile toggle */}
+        {/* Menu toggle - todas as telas */}
         <button
-          className="md:hidden text-primary-foreground"
+          className="text-primary-foreground"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Menu"
         >
@@ -95,7 +68,7 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-serra-green/95 backdrop-blur-md overflow-hidden"
+            className="bg-serra-green/95 backdrop-blur-md overflow-hidden"
           >
             <div className="px-6 py-4 flex flex-col gap-4">
               {navLinks.map((link) =>

@@ -6,11 +6,28 @@ import heroFarm from "@/assets/hero-farm.jpg";
 const HeroSection = () => {
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* Background */}
-      <div
+      {/* Background image - comentado */}
+      {/* <div
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: `url(${heroFarm})` }}
       >
+        <div className="absolute inset-0 bg-serra-black/60" />
+      </div> */}
+
+      {/* Background video */}
+      <div className="absolute inset-0">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover"
+        >
+          <source
+            src="https://uaxraccxizldcvuwjitt.supabase.co/storage/v1/object/public/app/0208%20(1).mp4"
+            type="video/mp4"
+          />
+        </video>
         <div className="absolute inset-0 bg-serra-black/60" />
       </div>
 
