@@ -1,96 +1,99 @@
 
-# Integração dos Assets Reais - Pé de Serra
 
-## Resumo
+# Ajustes Visuais - Hero, Navbar e BrandSection
 
-Vou integrar os materiais oficiais que você enviou ao site:
-- **Logo oficial** - Navbar, Footer e Hero
-- **Foto dos produtores** (P&B) - Seção "Nossos Produtores"
-- **4 produtos reais** - Substituir os dados placeholder pelos cafés reais com suas embalagens
+## Resumo das Alterações
+
+Vou implementar os três ajustes solicitados para refinar a experiência visual do site:
 
 ---
 
-## Assets a Integrar
+## 1. Hero Section — Vídeo de Fundo
 
-### 1. Logo Oficial
-Arquivo: `WhatsApp_Image_2026-02-05_at_11.28.58.jpeg`
-- Montanhas verdes com sol laranja
-- Texto "PÉ DE SERRA" e "TORRA DE CAFÉ"
-- Será usado na Navbar (versão menor) e Footer
+**Arquivo:** `src/components/home/HeroSection.tsx`
 
-### 2. Foto dos Produtores
-Arquivo: `image-10.png`
-- Imagem em preto e branco dos trabalhadores sob abrigo rústico
-- Montanhas ao fundo - perfeita para a seção "Nossos Produtores"
+- Comentar a imagem de fundo atual (não excluir)
+- Adicionar elemento `<video>` com as propriedades:
+  - `autoPlay`, `loop`, `muted`, `playsInline`
+  - URL: `https://uaxraccxizldcvuwjitt.supabase.co/storage/v1/object/public/app/0208%20(1).mp4`
+- Manter o overlay escuro para legibilidade do texto
 
-### 3. Imagens das Embalagens (4 produtos)
-Cada embalagem será salva como imagem do produto para exibir nos cards:
-- **Amarelo** - Catucai 44 IAC (Emílio Horst - Iúna/ES)
-- **Verde** - Catucai Amarelo 785-15 (Emílio Horst - Iúna/ES)
-- **Rosa/Coral** - Arara (Eduardo Cerqueira - Manhuaçu/MG)
-- **Roxo** - Catuaí 44 (Gabriel Protázio - Forquilha do Rio/ES)
-
----
-
-## Produtos Reais (Dados Extraídos)
-
-| Cor | Notas Sensoriais | Processo | Altitude | Variedade | Pontuação | Produtor | Região |
-|-----|-----------------|----------|----------|-----------|-----------|----------|--------|
-| Amarelo | Limão, Rapadura, Baunilha | Natural | 1000m | Catucai 44 IAC | 87 | Emílio Horst | Iúna (ES) |
-| Verde | Rapadura, Caramelo, Chocolate, Mel | Natural | 1000m | Catucai Amarelo 785-15 | - | Emílio Horst | Iúna (ES) |
-| Rosa | Caramelo, Chocolate, Mel | Cereja Descascado | 1060m | Arara | 85,25 | Eduardo Cerqueira | Manhuaçu (MG) |
-| Roxo | Caramelo, Doce de Leite, Melaço, Castanhas, Limão | Cereja Descascado | 1200m | Catuaí 44 | 86 | Gabriel Protázio | Forquilha do Rio (ES) |
-
----
-
-## Alterações no Código
-
-### 1. Copiar Assets para o Projeto
 ```text
-src/assets/
-├── logo-pe-de-serra.jpg      (logo oficial)
-├── produtores-bw.jpg         (foto P&B dos produtores)
-├── pack-amarelo.jpg          (embalagem amarela)
-├── pack-verde.jpg            (embalagem verde)
-├── pack-rosa.jpg             (embalagem rosa)
-└── pack-roxo.jpg             (embalagem roxa)
+Antes: background-image com heroFarm.jpg
+Depois: <video> em loop + overlay bg-serra-black/60
 ```
 
-### 2. Atualizar `src/data/products.ts`
-- Substituir os 4 produtos fictícios pelos 4 reais
-- Adicionar campos: `producer`, `variety`, `process`, `altitude`, `color`
-- Atualizar a interface `Coffee` com os novos campos
+---
 
-### 3. Atualizar Componentes
+## 2. Navbar — Simplificação
 
-**Navbar.tsx**
-- Substituir texto "Pé de Serra" pela logo oficial
+**Arquivo:** `src/components/Navbar.tsx`
 
-**Footer.tsx**
-- Adicionar a logo oficial
+- Remover os links de navegação visíveis no desktop (linhas 54-79)
+- Manter apenas:
+  - **Logo** à esquerda
+  - **Ícone de menu hamburger** à direita (para todas as telas)
+- O menu hamburger abrirá um painel lateral/dropdown com todas as opções
+- Remover a classe `md:hidden` do botão do menu para aparecer em todas as telas
 
-**ProducerSpotlight.tsx**
-- Trocar o placeholder pela foto real em P&B dos produtores
+```text
+Layout Atual (desktop): [LOGO] -------- [Início] [Cafés] [Sobre] [Contato]
+Layout Novo (todas telas): [LOGO] --------------------------------- [☰ Menu]
+```
 
-**PricingSection.tsx / FeaturedCoffees.tsx**
-- Exibir imagem da embalagem de cada produto
-- Mostrar informações detalhadas (produtor, variedade, processo)
+---
 
-**CafesPage.tsx**
-- Atualizar grid de produtos com as embalagens reais
-- Exibir todas as informações técnicas de cada café
+## 3. BrandSection — Imagem Full-Bleed Lifestyle
+
+**Arquivo:** `src/components/home/BrandSection.tsx`
+
+- Usar AI para gerar uma imagem no estilo Onyx Coffee Lab:
+  - Coador/dripper cerâmico com jarra âmbar
+  - Pacotes de café artesanal
+  - Bancada clara, iluminação natural, fundo minimalista
+  - Estética clean e sofisticada
+- Aplicar a imagem como background full-bleed da seção
+- Reposicionar o conteúdo de texto com overlay para legibilidade
+- Remover o layout de duas colunas
+
+```text
+Layout Atual: [Texto] | [Imagem lateral]
+Layout Novo: [Imagem full-bleed com overlay] + [Texto centralizado ou à esquerda]
+```
+
+---
+
+## Estrutura Técnica
+
+### HeroSection.tsx (alteração)
+```tsx
+{/* Background image - comentado */}
+{/* <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${heroFarm})` }}> */}
+
+{/* Background video */}
+<div className="absolute inset-0">
+  <video autoPlay loop muted playsInline className="w-full h-full object-cover">
+    <source src="https://..." type="video/mp4" />
+  </video>
+  <div className="absolute inset-0 bg-serra-black/60" />
+</div>
+```
+
+### Navbar.tsx (alteração)
+- Remover bloco `hidden md:flex` com links desktop
+- Mudar `md:hidden` para exibir em todas as telas
+- Menu mobile agora funciona como menu principal
+
+### BrandSection.tsx (alteração)
+- Seção com `relative` e imagem de fundo absoluta
+- Overlay escuro semitransparente
+- Texto sobre a imagem com contraste adequado
 
 ---
 
 ## Benefícios
 
-- Site com identidade visual real da marca
-- Produtos com dados autênticos e completos
-- Foto real dos produtores transmite autenticidade
-- Cores das embalagens criam diferenciação visual entre produtos
+- **Hero com vídeo**: Experiência mais imersiva e dinâmica
+- **Navbar minimalista**: Visual mais limpo e moderno, consistente com a estética Onyx
+- **BrandSection full-bleed**: Impacto visual maior, estilo lifestyle premium
 
----
-
-## Observação sobre Regiões
-
-Note que os produtos são de **Espírito Santo** (Iúna, Forquilha do Rio) e **Minas Gerais** (Manhuaçu), então posso ajustar a seção de regiões para refletir isso, se desejar.
