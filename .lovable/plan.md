@@ -1,99 +1,83 @@
 
 
-# Ajustes Visuais - Hero, Navbar e BrandSection
+# Seção "Nossas Seleções" -- Redesign Interativo
 
-## Resumo das Alterações
+## Conceito
 
-Vou implementar os três ajustes solicitados para refinar a experiência visual do site:
+Substituir o layout atual (dois cafés em blocos alternados) por uma experiencia imersiva e interativa que exibe os **4 cafes** com as **imagens reais das embalagens**.
 
----
-
-## 1. Hero Section — Vídeo de Fundo
-
-**Arquivo:** `src/components/home/HeroSection.tsx`
-
-- Comentar a imagem de fundo atual (não excluir)
-- Adicionar elemento `<video>` com as propriedades:
-  - `autoPlay`, `loop`, `muted`, `playsInline`
-  - URL: `https://uaxraccxizldcvuwjitt.supabase.co/storage/v1/object/public/app/0208%20(1).mp4`
-- Manter o overlay escuro para legibilidade do texto
-
-```text
-Antes: background-image com heroFarm.jpg
-Depois: <video> em loop + overlay bg-serra-black/60
-```
+A ideia: uma seção full-width com fundo escuro (serra-black) onde os 4 cafes sao apresentados como "cartas" clicaveis. O usuario clica em uma embalagem e ela "abre" revelando todos os detalhes daquele cafe com animacoes suaves.
 
 ---
 
-## 2. Navbar — Simplificação
+## Layout e Interacao
 
-**Arquivo:** `src/components/Navbar.tsx`
+### Estado Inicial
+- Fundo escuro (serra-black) com titulo "nossas selecoes"
+- 4 embalagens lado a lado (em desktop) ou 2x2 (tablet) ou carrossel (mobile)
+- Cada embalagem tem um leve efeito de hover: escala sutil + brilho dourado na borda
+- Abaixo de cada embalagem, apenas o nome do cafe em blackletter
 
-- Remover os links de navegação visíveis no desktop (linhas 54-79)
-- Manter apenas:
-  - **Logo** à esquerda
-  - **Ícone de menu hamburger** à direita (para todas as telas)
-- O menu hamburger abrirá um painel lateral/dropdown com todas as opções
-- Remover a classe `md:hidden` do botão do menu para aparecer em todas as telas
+### Ao Clicar em uma Embalagem
+- A embalagem selecionada se expande com animacao (framer-motion layoutId)
+- Um painel de detalhes aparece ao lado (desktop) ou abaixo (mobile) com:
+  - Nome, variedade, regiao, produtor
+  - Notas sensoriais como tags animadas que surgem em sequencia
+  - Score (se existir) com destaque dourado
+  - Precos por peso
+  - Botao "Peca no WhatsApp"
+- As outras 3 embalagens ficam em escala menor e com opacidade reduzida
+- Clicar em outra embalagem faz a transicao suave
 
-```text
-Layout Atual (desktop): [LOGO] -------- [Início] [Cafés] [Sobre] [Contato]
-Layout Novo (todas telas): [LOGO] --------------------------------- [☰ Menu]
-```
-
----
-
-## 3. BrandSection — Imagem Full-Bleed Lifestyle
-
-**Arquivo:** `src/components/home/BrandSection.tsx`
-
-- Usar AI para gerar uma imagem no estilo Onyx Coffee Lab:
-  - Coador/dripper cerâmico com jarra âmbar
-  - Pacotes de café artesanal
-  - Bancada clara, iluminação natural, fundo minimalista
-  - Estética clean e sofisticada
-- Aplicar a imagem como background full-bleed da seção
-- Reposicionar o conteúdo de texto com overlay para legibilidade
-- Remover o layout de duas colunas
-
-```text
-Layout Atual: [Texto] | [Imagem lateral]
-Layout Novo: [Imagem full-bleed com overlay] + [Texto centralizado ou à esquerda]
-```
+### Mobile
+- Carrossel horizontal com snap scroll (embla-carousel)
+- Ao clicar, detalhes expandem abaixo da embalagem
 
 ---
 
-## Estrutura Técnica
+## Assets
 
-### HeroSection.tsx (alteração)
-```tsx
-{/* Background image - comentado */}
-{/* <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${heroFarm})` }}> */}
-
-{/* Background video */}
-<div className="absolute inset-0">
-  <video autoPlay loop muted playsInline className="w-full h-full object-cover">
-    <source src="https://..." type="video/mp4" />
-  </video>
-  <div className="absolute inset-0 bg-serra-black/60" />
-</div>
-```
-
-### Navbar.tsx (alteração)
-- Remover bloco `hidden md:flex` com links desktop
-- Mudar `md:hidden` para exibir em todas as telas
-- Menu mobile agora funciona como menu principal
-
-### BrandSection.tsx (alteração)
-- Seção com `relative` e imagem de fundo absoluta
-- Overlay escuro semitransparente
-- Texto sobre a imagem com contraste adequado
+Copiar as 4 imagens das embalagens (extraidas dos PDFs) para `src/assets/`:
+- `pack-amarelo.jpg` (Catucai 44 IAC)
+- `pack-verde.jpg` (Catucai Amarelo 785-15)
+- `pack-rosa.jpg` (Arara)
+- `pack-roxo.jpg` (Catuai 44)
 
 ---
 
-## Benefícios
+## Arquivos Alterados
 
-- **Hero com vídeo**: Experiência mais imersiva e dinâmica
-- **Navbar minimalista**: Visual mais limpo e moderno, consistente com a estética Onyx
-- **BrandSection full-bleed**: Impacto visual maior, estilo lifestyle premium
+### `src/components/home/FeaturedCoffees.tsx` (reescrita completa)
+- Importar as 4 imagens das embalagens
+- Estado `selectedId` para controlar qual cafe esta ativo
+- Layout:
+  - Titulo da secao
+  - Grid de 4 embalagens com `motion.div` e animacoes de hover/selecao
+  - Painel de detalhes com `AnimatePresence` para transicoes suaves
+- Efeitos visuais:
+  - Hover: `scale(1.05)` + `border-serra-gold`
+  - Selecionado: `scale(1.1)` + glow dourado
+  - Nao selecionado: `opacity(0.4)` + `scale(0.95)`
+  - Notas sensoriais: surgem uma por uma com delay escalonado
 
+### `src/data/products.ts`
+- Adicionar campo `packImage` ao tipo `Coffee` mapeando para as novas imagens importadas (ou usar mapeamento no componente)
+
+---
+
+## Detalhes Tecnicos
+
+- Framer Motion: `AnimatePresence`, `motion.div`, `layout` prop para transicoes de layout
+- Embla Carousel: apenas no mobile (abaixo de `md:`)
+- Todas animacoes com `duration: 0.5` e `ease: "easeInOut"`
+- Responsivo: grid 4 colunas (lg), 2 colunas (md), carrossel (sm)
+
+---
+
+## Beneficios
+
+- Mostra as embalagens reais (identidade visual forte)
+- Interativo: o usuario explora cada cafe clicando
+- Todas as 4 selecoes visíveis, nao apenas 2
+- Animacoes suaves criam uma experiencia premium
+- Consistente com a estetica dark/dourada do restante do site
