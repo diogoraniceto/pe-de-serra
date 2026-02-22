@@ -56,8 +56,6 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
           className="font-body text-primary-foreground/80 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">Cafés especiais das montanhas.
-Do produtor familiar para a sua xícara.
-
           <br />
           Do produtor familiar à sua xícara.
         </motion.p>

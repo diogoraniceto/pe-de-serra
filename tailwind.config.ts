@@ -14,7 +14,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        blackletter: ["'UnifrakturCook'", "cursive"],
+        blackletter: ["'Playfair Display'", "serif"],
         script: ["'Dancing Script'", "cursive"],
         body: ["'Inter'", "sans-serif"],
       },

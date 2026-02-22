@@ -10,7 +10,7 @@ const colorClasses = {
 
 const PricingSection = () => {
   return (
-    <section className="bg-background py-24 px-6">
+    <section className="bg-background py-32 px-6">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -38,7 +38,7 @@ const PricingSection = () => {
             >
               {/* Color indicator */}
               <div className={`h-2 ${colorClasses[coffee.color]}`} />
-              
+
               <div className="p-6">
                 <p className="font-body text-xs uppercase tracking-wider text-serra-gold mb-1">
                   {coffee.region}
