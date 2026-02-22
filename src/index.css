@@ -1,16 +1,4 @@
-/* Sofia Pro */
-@font-face { font-family: 'Sofia Pro'; src: url('/fonts/Sofia_Pro_Light.otf') format('opentype'); font-weight: 300; font-style: normal; font-display: swap; }
-@font-face { font-family: 'Sofia Pro'; src: url('/fonts/Sofia_Pro_Regular.otf') format('opentype'); font-weight: 400; font-style: normal; font-display: swap; }
-@font-face { font-family: 'Sofia Pro'; src: url('/fonts/Sofia_Pro_Medium.otf') format('opentype'); font-weight: 500; font-style: normal; font-display: swap; }
-@font-face { font-family: 'Sofia Pro'; src: url('/fonts/Sofia_Pro_SemiBold.otf') format('opentype'); font-weight: 600; font-style: normal; font-display: swap; }
-@font-face { font-family: 'Sofia Pro'; src: url('/fonts/Sofia_Pro_Bold.otf') format('opentype'); font-weight: 700; font-style: normal; font-display: swap; }
-
-/* Avenir */
-@font-face { font-family: 'Avenir'; src: url('/fonts/Avenir_Light.ttf') format('truetype'); font-weight: 300; font-style: normal; font-display: swap; }
-@font-face { font-family: 'Avenir'; src: url('/fonts/Avenir_Book.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
-@font-face { font-family: 'Avenir'; src: url('/fonts/Avenir_Regular.ttf') format('truetype'); font-weight: 500; font-style: normal; font-display: swap; }
-@font-face { font-family: 'Avenir'; src: url('/fonts/Avenir_Heavy.ttf') format('truetype'); font-weight: 800; font-style: normal; font-display: swap; }
-@font-face { font-family: 'Avenir'; src: url('/fonts/Avenir_Black.ttf') format('truetype'); font-weight: 900; font-style: normal; font-display: swap; }
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=Dancing+Script:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -106,17 +94,15 @@
 
 /* Typography classes */
 .font-blackletter {
-  font-family: 'Sofia Pro', sans-serif;
-  font-weight: 700;
+  font-family: 'UnifrakturCook', cursive;
 }
 
 .font-script {
-  font-family: 'Sofia Pro', sans-serif;
-  font-weight: 500;
+  font-family: 'Dancing Script', cursive;
 }
 
 .font-body {
-  font-family: 'Avenir', sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 /* Arch-shaped clip */

@@ -18,7 +18,7 @@ const regions = [
 
 const RegionsSection = () => {
   return (
-    <section className="bg-serra-green pt-24 pb-0 px-6">
+    <section className="bg-serra-green py-24 px-6">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -42,14 +42,24 @@ const RegionsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: i * 0.2 }}
-              className="relative group cursor-pointer flex flex-col items-center"
+              className="relative group cursor-pointer overflow-hidden"
             >
-              {/* Text above image */}
-              <div className="text-center mb-6">
+              {/* Arch shape */}
+              <div className="arch-top overflow-hidden h-[500px] md:h-[600px]">
+                <img
+                  src={region.image}
+                  alt={region.name}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-serra-black/50 group-hover:bg-serra-black/40 transition-colors duration-500" />
+              </div>
+
+              {/* Content */}
+              <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-8">
                 <h3 className="font-blackletter text-4xl md:text-5xl text-primary-foreground mb-4">
                   {region.name}
                 </h3>
-                <p className="font-body text-primary-foreground/80 text-sm max-w-xs mx-auto leading-relaxed mb-4">
+                <p className="font-body text-primary-foreground/80 text-sm max-w-xs mb-6 leading-relaxed">
                   {region.description}
                 </p>
                 <Link
@@ -58,15 +68,6 @@ const RegionsSection = () => {
                 >
                   Ver Cafés →
                 </Link>
-              </div>
-
-              {/* Arch-top image - bottom aligned with section */}
-              <div className="arch-top overflow-hidden h-[350px] md:h-[420px] w-full max-w-[380px]">
-                <img
-                  src={region.image}
-                  alt={region.name}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
               </div>
             </motion.div>
           ))}

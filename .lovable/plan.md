@@ -1,99 +1,83 @@
 
 
-# Plano de Alteracoes (7 itens)
+# Seção "Nossas Seleções" -- Redesign Interativo
 
-## 1. Tipografia: Sofia Pro e Avenir
+## Conceito
 
-Substituir as 3 fontes atuais (UnifrakturCook, Dancing Script, Inter) por apenas 2:
-- **Sofia Pro** (.otf) -- substitui UnifrakturCook (titulos) e Dancing Script (assinaturas)
-- **Avenir** (.otf) -- substitui Inter (corpo de texto)
+Substituir o layout atual (dois cafés em blocos alternados) por uma experiencia imersiva e interativa que exibe os **4 cafes** com as **imagens reais das embalagens**.
 
-**Preciso que voce envie os arquivos .otf** das fontes Sofia Pro e Avenir na proxima mensagem para que eu possa hospeda-los no projeto.
-
-### Arquivos alterados:
-- `src/index.css` -- remover importacao do Google Fonts, adicionar `@font-face` para Sofia Pro e Avenir
-- `tailwind.config.ts` -- atualizar `fontFamily` (blackletter/script -> Sofia Pro, body -> Avenir)
-- Todos os componentes que usam `font-blackletter`, `font-script`, `font-body` continuarao funcionando pois as classes Tailwind apontarao para as novas fontes
+A ideia: uma seção full-width com fundo escuro (serra-black) onde os 4 cafes sao apresentados como "cartas" clicaveis. O usuario clica em uma embalagem e ela "abre" revelando todos os detalhes daquele cafe com animacoes suaves.
 
 ---
 
-## 2. Secao "Nossa Essencia" (BrandSection) -- Layout lado a lado
+## Layout e Interacao
 
-Transformar de imagem full-bleed com texto centralizado para layout em 2 colunas (como ProducerSpotlight):
-- Fundo preto (serra-black) para uniformidade com a secao seguinte (Nossas Selecoes)
-- Texto alinhado a esquerda (coluna esquerda)
-- Imagem menor no lado direito (coluna direita)
+### Estado Inicial
+- Fundo escuro (serra-black) com titulo "nossas selecoes"
+- 4 embalagens lado a lado (em desktop) ou 2x2 (tablet) ou carrossel (mobile)
+- Cada embalagem tem um leve efeito de hover: escala sutil + brilho dourado na borda
+- Abaixo de cada embalagem, apenas o nome do cafe em blackletter
 
-### Arquivo alterado:
-- `src/components/home/BrandSection.tsx` -- reescrever layout de full-bleed para grid 2 colunas
+### Ao Clicar em uma Embalagem
+- A embalagem selecionada se expande com animacao (framer-motion layoutId)
+- Um painel de detalhes aparece ao lado (desktop) ou abaixo (mobile) com:
+  - Nome, variedade, regiao, produtor
+  - Notas sensoriais como tags animadas que surgem em sequencia
+  - Score (se existir) com destaque dourado
+  - Precos por peso
+  - Botao "Peca no WhatsApp"
+- As outras 3 embalagens ficam em escala menor e com opacidade reduzida
+- Clicar em outra embalagem faz a transicao suave
 
----
-
-## 3. FAQ: Nova pagina + link no rodape
-
-- Remover `FAQSection` da pagina inicial (Index)
-- Criar nova pagina `/perguntas-frequentes` com a FAQ
-- Adicionar rota no `App.tsx`
-- Acrescentar link "Perguntas Frequentes" na navegacao do rodape (Footer)
-
-### Arquivos alterados:
-- `src/pages/Index.tsx` -- remover importacao e uso de FAQSection
-- `src/pages/FAQPage.tsx` -- nova pagina dedicada para FAQ
-- `src/App.tsx` -- adicionar rota `/perguntas-frequentes`
-- `src/components/Footer.tsx` -- adicionar link "Perguntas Frequentes" na secao Navegacao
+### Mobile
+- Carrossel horizontal com snap scroll (embla-carousel)
+- Ao clicar, detalhes expandem abaixo da embalagem
 
 ---
 
-## 4. Reordenar secoes: Produtores antes de Regioes
+## Assets
 
-Trocar a ordem no Index para que "Nossos Produtores" apareca antes de "Nossas Regioes".
-
-### Arquivo alterado:
-- `src/pages/Index.tsx` -- inverter `ProducerSpotlight` e `RegionsSection`
-
----
-
-## 5. Redesign da secao Nossas Regioes
-
-Inspirado nas imagens de referencia enviadas (estilo arch-top cards com fundo escuro):
-- Fundo verde (serra-green) -- manter
-- Imagens menores com formato arch-top (topo arredondado)
-- Remover o overlay escuro quadrado ao redor das imagens -- as imagens ficam diretamente sobre o fundo verde
-- A parte inferior das imagens deve coincidir com o final da secao (sem padding inferior)
-- Texto e descricao sobre as imagens
-
-### Arquivo alterado:
-- `src/components/home/RegionsSection.tsx` -- redesign do layout dos cards
+Copiar as 4 imagens das embalagens (extraidas dos PDFs) para `src/assets/`:
+- `pack-amarelo.jpg` (Catucai 44 IAC)
+- `pack-verde.jpg` (Catucai Amarelo 785-15)
+- `pack-rosa.jpg` (Arara)
+- `pack-roxo.jpg` (Catuai 44)
 
 ---
 
-## 6. Secao Arte da Torra -- por ultimo e menor
+## Arquivos Alterados
 
-Mover a secao `RoastingSection` para ser a ultima secao antes do Footer, e reduzir a altura vertical (menos padding).
+### `src/components/home/FeaturedCoffees.tsx` (reescrita completa)
+- Importar as 4 imagens das embalagens
+- Estado `selectedId` para controlar qual cafe esta ativo
+- Layout:
+  - Titulo da secao
+  - Grid de 4 embalagens com `motion.div` e animacoes de hover/selecao
+  - Painel de detalhes com `AnimatePresence` para transicoes suaves
+- Efeitos visuais:
+  - Hover: `scale(1.05)` + `border-serra-gold`
+  - Selecionado: `scale(1.1)` + glow dourado
+  - Nao selecionado: `opacity(0.4)` + `scale(0.95)`
+  - Notas sensoriais: surgem uma por uma com delay escalonado
 
-### Arquivo alterado:
-- `src/pages/Index.tsx` -- mover RoastingSection para depois de PricingSection
-- `src/components/home/RoastingSection.tsx` -- reduzir padding vertical (py-24 -> py-12 ou py-16)
-
----
-
-## Ordem final das secoes na pagina inicial:
-
-1. HeroSection (video)
-2. BrandSection (Nossa Essencia -- novo layout lado a lado, fundo preto)
-3. FeaturedCoffees (Nossas Selecoes -- fundo preto)
-4. ProducerSpotlight (Nossos Produtores)
-5. RegionsSection (Nossas Regioes -- redesign)
-6. PricingSection (Nossos Cafes)
-7. RoastingSection (Arte da Torra -- menor, por ultimo)
+### `src/data/products.ts`
+- Adicionar campo `packImage` ao tipo `Coffee` mapeando para as novas imagens importadas (ou usar mapeamento no componente)
 
 ---
 
-## Detalhes tecnicos
+## Detalhes Tecnicos
 
-- Fontes: `@font-face` com arquivos .otf hospedados em `src/assets/fonts/`
-- Todas as classes `font-blackletter` e `font-script` passam a usar Sofia Pro
-- Classe `font-body` passa a usar Avenir
-- Nenhuma dependencia nova necessaria
-- A secao de regioes usa CSS `border-radius` com `arch-top` ja existente no CSS
+- Framer Motion: `AnimatePresence`, `motion.div`, `layout` prop para transicoes de layout
+- Embla Carousel: apenas no mobile (abaixo de `md:`)
+- Todas animacoes com `duration: 0.5` e `ease: "easeInOut"`
+- Responsivo: grid 4 colunas (lg), 2 colunas (md), carrossel (sm)
 
+---
+
+## Beneficios
+
+- Mostra as embalagens reais (identidade visual forte)
+- Interativo: o usuario explora cada cafe clicando
+- Todas as 4 selecoes visíveis, nao apenas 2
+- Animacoes suaves criam uma experiencia premium
+- Consistente com a estetica dark/dourada do restante do site

@@ -8,6 +8,7 @@ import RegionsSection from "@/components/home/RegionsSection";
 import ProducerSpotlight from "@/components/home/ProducerSpotlight";
 import RoastingSection from "@/components/home/RoastingSection";
 import PricingSection from "@/components/home/PricingSection";
+import FAQSection from "@/components/home/FAQSection";
 
 const Index = () => {
   return (
@@ -17,10 +18,11 @@ const Index = () => {
         <HeroSection />
         <BrandSection />
         <FeaturedCoffees />
-        <ProducerSpotlight />
         <RegionsSection />
-        <PricingSection />
+        <ProducerSpotlight />
         <RoastingSection />
+        <PricingSection />
+        <FAQSection />
       </main>
       <Footer />
       <WhatsAppButton />
