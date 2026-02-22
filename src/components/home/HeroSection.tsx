@@ -8,11 +8,11 @@ const HeroSection = () => {
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* Background image - comentado */}
       {/* <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${heroFarm})` }}
-      >
-        <div className="absolute inset-0 bg-serra-black/60" />
-      </div> */}
+                                                       className="absolute inset-0 bg-cover bg-center"
+                                                       style={{ backgroundImage: `url(${heroFarm})` }}
+                                                      >
+                                                       <div className="absolute inset-0 bg-serra-black/60" />
+                                                      </div> */}
 
       {/* Background video */}
       <div className="absolute inset-0">
@@ -21,12 +21,12 @@ const HeroSection = () => {
           loop
           muted
           playsInline
-          className="w-full h-full object-cover"
-        >
+          className="w-full h-full object-cover">
+
           <source
             src="https://uaxraccxizldcvuwjitt.supabase.co/storage/v1/object/public/app/0208%20(1).mp4"
-            type="video/mp4"
-          />
+            type="video/mp4" />
+
         </video>
         <div className="absolute inset-0 bg-serra-black/60" />
       </div>
@@ -37,17 +37,17 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="font-body text-serra-gold text-sm uppercase tracking-[0.3em] mb-6"
-        >
-          Cafés Especiais • Minas Gerais
+          className="font-body text-serra-gold text-sm uppercase tracking-[0.3em] mb-6">CAFÉS ESPECIAIS • ES • MG
+
+
         </motion.p>
 
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
-          className="font-script text-6xl md:text-8xl lg:text-9xl text-primary-foreground mb-6"
-        >
+          className="font-script text-6xl md:text-8xl lg:text-9xl text-primary-foreground mb-6">
+
           Pé de Serra
         </motion.h1>
 
@@ -55,9 +55,9 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="font-body text-primary-foreground/80 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed"
-        >
-          Cafés especiais das montanhas de Minas Gerais.
+          className="font-body text-primary-foreground/80 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">Cafés especiais das montanhas.
+Do produtor familiar para a sua xícara.
+
           <br />
           Do produtor familiar à sua xícara.
         </motion.p>
@@ -65,12 +65,12 @@ const HeroSection = () => {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.8 }}
-        >
+          transition={{ delay: 0.8 }}>
+
           <Link
             to="/cafes"
-            className="inline-block font-body text-sm uppercase tracking-widest border-2 border-serra-gold text-serra-gold px-8 py-4 hover:bg-serra-gold hover:text-serra-black transition-all duration-300"
-          >
+            className="inline-block font-body text-sm uppercase tracking-widest border-2 border-serra-gold text-serra-gold px-8 py-4 hover:bg-serra-gold hover:text-serra-black transition-all duration-300">
+
             Conheça Nossos Cafés →
           </Link>
         </motion.div>
@@ -80,13 +80,13 @@ const HeroSection = () => {
       <motion.div
         className="absolute bottom-8 left-1/2 -translate-x-1/2 text-primary-foreground/50 flex flex-col items-center gap-2"
         animate={{ y: [0, 10, 0] }}
-        transition={{ repeat: Infinity, duration: 2 }}
-      >
-        <span className="font-body text-xs uppercase tracking-widest">Scroll</span>
+        transition={{ repeat: Infinity, duration: 2 }}>
+
+        <span className="font-body text-xs uppercase tracking-widest">ROLAR
+        </span>
         <ChevronDown size={20} />
       </motion.div>
-    </section>
-  );
+    </section>);
 };
 
 export default HeroSection;

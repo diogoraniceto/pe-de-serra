@@ -8,8 +8,8 @@ const BrandSection = () => {
       {/* Background image full-bleed */}
       <div
         className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${brandLifestyle})` }}
-      >
+        style={{ backgroundImage: `url(${brandLifestyle})` }}>
+
         <div className="absolute inset-0 bg-serra-black/50" />
       </div>
 
@@ -19,18 +19,18 @@ const BrandSection = () => {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
+          transition={{ duration: 0.8 }}>
+
           <p className="font-body text-serra-gold text-sm uppercase tracking-[0.3em] mb-4">
             Nossa Essência
           </p>
           <h2 className="font-blackletter text-5xl md:text-7xl text-primary-foreground mb-8">
             cafés especiais
           </h2>
-          <p className="font-body text-primary-foreground/90 leading-relaxed mb-6 text-lg">
-            Na Pé de Serra, acreditamos que cada xícara conta uma história. Selecionamos grãos de
-            produtores familiares das regiões do Caparaó e Matas de Minas, onde a altitude, o clima
-            e o cuidado artesanal se unem para criar cafés de qualidade excepcional.
+          <p className="font-body text-primary-foreground/90 leading-relaxed mb-6 text-lg">Nós da Pé de Serra, acreditamos que cada xícara conta uma história. Selecionamos grãos de produtores familiares das regiões do Caparaó e Matas de Minas, onde a altitude, o clima e o cuidado artesanal se unem para criar cafés de qualidade excepcional.
+
+
+
           </p>
           <p className="font-body text-primary-foreground/80 leading-relaxed mb-10">
             Nossa torra artesanal é cuidadosamente conduzida por Fábio, barista e especialista em
@@ -39,14 +39,14 @@ const BrandSection = () => {
           </p>
           <Link
             to="/sobre"
-            className="inline-block font-body text-sm uppercase tracking-widest border-2 border-serra-gold text-serra-gold px-8 py-4 hover:bg-serra-gold hover:text-serra-black transition-all duration-300"
-          >
+            className="inline-block font-body text-sm uppercase tracking-widest border-2 border-serra-gold text-serra-gold px-8 py-4 hover:bg-serra-gold hover:text-serra-black transition-all duration-300">
+
             Conheça Nossa História
           </Link>
         </motion.div>
       </div>
-    </section>
-  );
+    </section>);
+
 };
 
 export default BrandSection;
