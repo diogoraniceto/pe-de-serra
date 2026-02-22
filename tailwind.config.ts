@@ -14,9 +14,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        blackletter: ["'UnifrakturCook'", "cursive"],
-        script: ["'Dancing Script'", "cursive"],
-        body: ["'Inter'", "sans-serif"],
+        blackletter: ["'Sofia Pro'", "sans-serif"],
+        script: ["'Sofia Pro'", "sans-serif"],
+        body: ["'Avenir'", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
