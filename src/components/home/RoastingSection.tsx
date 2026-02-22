@@ -4,7 +4,7 @@ import roasting from "@/assets/roasting.jpg";
 
 const RoastingSection = () => {
   return (
-    <section className="relative py-24 overflow-hidden">
+    <section className="relative py-14 overflow-hidden">
       {/* Background video */}
       <div className="absolute inset-0">
         <video
