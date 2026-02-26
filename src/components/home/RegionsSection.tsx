@@ -7,18 +7,22 @@ const regions = [
   {
     name: "Caparaó",
     image: regionCaparao,
-    description: "Altitude acima de 1.000m, microclima único e o Pico da Bandeira como guardião dos cafezais.",
+    description: "Altitude que beira as nuvens e o microclima único dão vida a cafés com acidez vibrante, revelando o brilho das frutas vermelhas e a persistência do melaço.",
+    altitude: "1000m - 1400m",
+    terroir: "Vulcânico e Frio"
   },
   {
     name: "Matas de Minas",
     image: regionMatas,
-    description: "Vales férteis e florestas preservadas que dão vida a cafés com perfil floral e frutado.",
+    description: "Vales férteis e florestas preservadas que geram cafés super encorpados. O perfil sensorial destaca a doçura do caramelo e notas achocolatadas.",
+    altitude: "800m - 1200m",
+    terroir: "Mata Atlântica"
   },
 ];
 
 const RegionsSection = () => {
   return (
-    <section className="bg-serra-green py-32 px-6">
+    <section className="bg-serra-green py-32 px-6 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -30,11 +34,11 @@ const RegionsSection = () => {
             Origem
           </p>
           <h2 className="font-blackletter text-5xl md:text-6xl text-primary-foreground">
-            nossas regiões
+            Nossas regiões
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
           {regions.map((region, i) => (
             <motion.div
               key={region.name}
@@ -42,32 +46,48 @@ const RegionsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: i * 0.2 }}
-              className="relative group cursor-pointer overflow-hidden"
+              className="relative group overflow-hidden w-full h-[600px] md:h-[750px] flex items-center justify-center"
             >
-              {/* Arch shape */}
-              <div className="arch-top overflow-hidden h-[500px] md:h-[600px]">
+              {/* Arch shape container */}
+              <div className="arch-top w-full h-full relative overflow-hidden">
                 <img
                   src={region.image}
                   alt={region.name}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-serra-black/50 group-hover:bg-serra-black/40 transition-colors duration-500" />
-              </div>
+                <div className="absolute inset-0 bg-serra-black/60 group-hover:bg-serra-black/50 transition-colors duration-500" />
 
-              {/* Content */}
-              <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-8">
-                <h3 className="font-blackletter text-4xl md:text-5xl text-primary-foreground mb-4">
-                  {region.name}
-                </h3>
-                <p className="font-body text-primary-foreground/80 text-sm max-w-xs mb-6 leading-relaxed">
-                  {region.description}
-                </p>
-                <Link
-                  to="/cafes"
-                  className="font-body text-sm uppercase tracking-widest text-serra-gold border-b border-serra-gold pb-1 hover:text-primary-foreground hover:border-primary-foreground transition-colors"
-                >
-                  Ver Cafés →
-                </Link>
+                {/* Content Overlay */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-8 md:p-12 z-10 text-primary-foreground">
+                  <h3 className="font-blackletter text-5xl md:text-6xl mb-6">
+                    {region.name}
+                  </h3>
+
+                  {/* Ficha Técnica / Tags */}
+                  <div className="flex flex-wrap justify-center gap-3 mb-8">
+                    <div className="border border-serra-gold/50 bg-serra-black/30 backdrop-blur-sm px-4 py-1.5 rounded-full">
+                      <p className="font-body text-xs text-serra-gold uppercase tracking-widest">
+                        Altitude: <span className="text-primary-foreground font-medium">{region.altitude}</span>
+                      </p>
+                    </div>
+                    <div className="border border-serra-gold/50 bg-serra-black/30 backdrop-blur-sm px-4 py-1.5 rounded-full">
+                      <p className="font-body text-xs text-serra-gold uppercase tracking-widest">
+                        Terroir: <span className="text-primary-foreground font-medium">{region.terroir}</span>
+                      </p>
+                    </div>
+                  </div>
+
+                  <p className="font-body text-primary-foreground/90 text-sm md:text-base max-w-sm mb-10 leading-relaxed font-light">
+                    {region.description}
+                  </p>
+
+                  <Link
+                    to="/cafes"
+                    className="font-body text-sm uppercase tracking-widest border-b border-serra-gold pb-1 text-serra-gold hover:text-white hover:border-white transition-colors"
+                  >
+                    Ver Cafés →
+                  </Link>
+                </div>
               </div>
             </motion.div>
           ))}

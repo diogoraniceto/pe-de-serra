@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useRef, useEffect } from "react";
+import { motion, AnimatePresence, useInView } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { coffees } from "@/data/products";
 import { useIsMobile } from "@/hooks/use-mobile";
 
@@ -17,11 +18,47 @@ const packImages: Record<string, string> = {
 
 const FeaturedCoffees = () => {
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [hasAutoOpened, setHasAutoOpened] = useState(false);
   const isMobile = useIsMobile();
   const selectedCoffee = coffees.find((c) => c.id === selectedId);
+  const currentIndex = selectedId ? coffees.findIndex(c => c.id === selectedId) : -1;
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Aguarda até que 50% do container dos cards esteja visível na tela
+  const isInView = useInView(containerRef, { once: true, amount: 0.5 });
+
+  useEffect(() => {
+    if (isInView && !selectedId && !hasAutoOpened) {
+      setSelectedId(coffees[0].id);
+      setHasAutoOpened(true);
+    }
+  }, [isInView, selectedId, hasAutoOpened]);
 
   const handleSelect = (id: string) => {
-    setSelectedId((prev) => prev === id ? null : id);
+    setSelectedId(id);
+  };
+
+  const handleNext = (e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    if (currentIndex >= 0) {
+      const nextIndex = (currentIndex + 1) % coffees.length;
+      handleSelect(coffees[nextIndex].id);
+    }
+  };
+
+  const handlePrev = (e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    if (currentIndex >= 0) {
+      const prevIndex = (currentIndex - 1 + coffees.length) % coffees.length;
+      handleSelect(coffees[prevIndex].id);
+    }
+  };
+
+  const handleViewportEnter = () => {
+    if (!selectedId && !hasAutoOpened) {
+      setSelectedId(coffees[0].id);
+      setHasAutoOpened(true);
+    }
   };
 
   return (
@@ -34,131 +71,160 @@ const FeaturedCoffees = () => {
           viewport={{ once: true }}
           className="text-center mb-16">
 
-          <p className="font-body text-serra-gold text-sm uppercase tracking-[0.3em] mb-4">Destaques
-
+          <p className="font-body text-serra-gold text-sm uppercase tracking-[0.3em] mb-4">
+            Destaques
           </p>
           <h2 className="font-blackletter text-5xl md:text-6xl text-serra-offwhite">
-            nossas seleções
+            Nossas seleções
           </h2>
         </motion.div>
 
-        {/* Desktop/Tablet Grid */}
-        {!isMobile ?
-          <div className="flex flex-col items-center">
-            <div
-              className={`grid gap-6 transition-all duration-500 ${selectedId ?
-                "grid-cols-4 max-w-3xl" :
-                "grid-cols-2 md:grid-cols-4 max-w-5xl"} w-full`
-              }>
+        <div className="w-full">
 
-              {coffees.map((coffee) => {
-                const isSelected = coffee.id === selectedId;
-                const hasSelection = selectedId !== null;
 
-                return (
-                  <motion.div
-                    key={coffee.id}
-                    layout
-                    onClick={() => handleSelect(coffee.id)}
-                    className="cursor-pointer flex flex-col items-center"
-                    animate={{
-                      opacity: hasSelection && !isSelected ? 0.4 : 1,
-                      scale: hasSelection && !isSelected ? 0.9 : 1
-                    }}
-                    transition={{ duration: 0.5, ease: "easeInOut" }}>
+          {/* Desktop/Tablet Grid */}
+          {!isMobile ?
+            <div className="flex flex-col items-center" ref={containerRef}>
+              <div
+                className={`grid gap-4 md:gap-8 transition-all duration-500 grid-cols-4 max-w-5xl w-full`
+                }>
 
-                    <motion.div
-                      className={`relative overflow-hidden rounded-lg transition-all duration-300 ${isSelected ?
-                        "ring-2 ring-serra-gold shadow-[0_0_30px_rgba(191,155,75,0.3)]" :
-                        "ring-1 ring-transparent hover:ring-serra-gold/50"}`
-                      }
-                      whileHover={!hasSelection ? { scale: 1.05 } : {}}
-                      transition={{ duration: 0.3 }}>
-
-                      <img
-                        src={packImages[coffee.color]}
-                        alt={`Embalagem ${coffee.name}`}
-                        className="w-full h-auto object-cover" />
-
-                    </motion.div>
-                    <p className="font-blackletter text-lg text-serra-offwhite mt-3 text-center">
-                      {coffee.name}
-                    </p>
-                  </motion.div>);
-
-              })}
-            </div>
-
-            {/* Desktop Detail Panel */}
-            <AnimatePresence mode="wait">
-              {selectedCoffee &&
-                <motion.div
-                  key={selectedCoffee.id}
-                  initial={{ opacity: 0, y: 30, height: 0 }}
-                  animate={{ opacity: 1, y: 0, height: "auto" }}
-                  exit={{ opacity: 0, y: 20, height: 0 }}
-                  transition={{ duration: 0.5, ease: "easeInOut" }}
-                  className="w-full max-w-3xl mt-12 overflow-hidden">
-
-                  <CoffeeDetails coffee={selectedCoffee} />
-                </motion.div>
-              }
-            </AnimatePresence>
-          </div> : (
-
-            /* Mobile: Horizontal scroll */
-            <div>
-              <div className="flex gap-5 overflow-x-auto snap-x snap-mandatory pb-4 -mx-6 px-6 scrollbar-hide">
                 {coffees.map((coffee) => {
                   const isSelected = coffee.id === selectedId;
+
                   return (
-                    <motion.div
-                      key={coffee.id}
-                      className="snap-center shrink-0 w-[200px] cursor-pointer flex flex-col items-center"
-                      onClick={() => handleSelect(coffee.id)}
-                      animate={{
-                        opacity: selectedId && !isSelected ? 0.4 : 1,
-                        scale: selectedId && !isSelected ? 0.9 : 1
-                      }}
-                      transition={{ duration: 0.4 }}>
+                    <div key={coffee.id} className="flex flex-col items-center justify-center min-h-[200px]">
+                      {!isSelected && (
+                        <motion.div
+                          layoutId={`coffee-card-${coffee.id}`}
+                          onClick={() => handleSelect(coffee.id)}
+                          className="cursor-pointer flex flex-col items-center"
+                          animate={{ opacity: 1, scale: 1 }}
+                          exit={{ opacity: 0, scale: 0.9 }}
+                          whileHover={{ scale: 1.05 }}
+                          transition={{ duration: 0.4, ease: "easeInOut" }}>
 
-                      <div
-                        className={`relative overflow-hidden rounded-lg ${isSelected ?
-                          "ring-2 ring-serra-gold shadow-[0_0_20px_rgba(191,155,75,0.3)]" :
-                          ""}`
-                        }>
+                          <motion.div
+                            layoutId={`coffee-image-${coffee.id}`}
+                            className="relative overflow-hidden rounded-lg ring-1 ring-transparent hover:ring-serra-gold/50 transition-all duration-300">
 
-                        <img
-                          src={packImages[coffee.color]}
-                          alt={`Embalagem ${coffee.name}`}
-                          className="w-full h-auto" />
+                            <img
+                              src={packImages[coffee.color]}
+                              alt={`Embalagem ${coffee.name}`}
+                              className="w-full h-auto object-cover max-w-[150px] md:max-w-full" />
 
-                      </div>
-                      <p className="font-blackletter text-base text-serra-offwhite mt-2 text-center">
-                        {coffee.name}
-                      </p>
-                    </motion.div>);
+                          </motion.div>
+                          <p className="font-blackletter mt-3 text-center text-serra-offwhite text-lg transition-colors">
+                            {coffee.name}
+                          </p>
+                        </motion.div>
+                      )}
+                    </div>
+                  );
 
                 })}
               </div>
 
-              {/* Mobile Detail Panel */}
-              <AnimatePresence mode="wait">
+              {/* Desktop Detail Panel */}
+              <AnimatePresence mode="popLayout">
                 {selectedCoffee &&
                   <motion.div
-                    key={selectedCoffee.id}
-                    initial={{ opacity: 0, y: 20, height: 0 }}
-                    animate={{ opacity: 1, y: 0, height: "auto" }}
-                    exit={{ opacity: 0, y: 10, height: 0 }}
-                    transition={{ duration: 0.4 }}
-                    className="mt-8 overflow-hidden">
+                    key={`detail-${selectedCoffee.id}`}
+                    layoutId={`coffee-card-${selectedCoffee.id}`}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                    className="w-full max-w-5xl mt-12 overflow-hidden">
 
-                    <CoffeeDetails coffee={selectedCoffee} />
+                    <div className="border border-serra-gold/20 rounded-lg p-8 md:p-12 bg-serra-black/80 backdrop-blur">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                        <motion.div
+                          layoutId={`coffee-image-${selectedCoffee.id}`}
+                          className="w-full flex justify-center"
+                        >
+                          <img
+                            src={packImages[selectedCoffee.color]}
+                            alt={`Detalhe da Embalagem ${selectedCoffee.name}`}
+                            className="w-full max-w-[400px] h-auto object-cover rounded shadow-[0_0_30px_rgba(191,155,75,0.15)]"
+                          />
+                        </motion.div>
+
+                        <CoffeeDetails coffee={selectedCoffee} onNext={handleNext} onPrev={handlePrev} />
+                      </div>
+                    </div>
                   </motion.div>
                 }
               </AnimatePresence>
-            </div>)
-        }
+            </div> : (
+
+              /* Mobile: Horizontal scroll */
+              <div ref={containerRef}>
+                <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 -mx-6 px-6 scrollbar-hide">
+                  {coffees.map((coffee) => {
+                    const isSelected = coffee.id === selectedId;
+                    return (
+                      <div key={coffee.id} className="snap-center shrink-0 w-[160px] min-h-[220px] flex justify-center items-center">
+                        {!isSelected && (
+                          <motion.div
+                            layoutId={`coffee-card-${coffee.id}`}
+                            className="cursor-pointer flex flex-col items-center"
+                            onClick={() => handleSelect(coffee.id)}
+                            transition={{ duration: 0.4 }}>
+
+                            <motion.div
+                              layoutId={`coffee-image-${coffee.id}`}
+                              className="relative overflow-hidden rounded-lg">
+
+                              <img
+                                src={packImages[coffee.color]}
+                                alt={`Embalagem ${coffee.name}`}
+                                className="w-[120px] h-auto object-cover mx-auto" />
+
+                            </motion.div>
+                            <p className="font-blackletter text-base text-serra-offwhite mt-2 text-center">
+                              {coffee.name}
+                            </p>
+                          </motion.div>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* Mobile Detail Panel */}
+                <AnimatePresence mode="popLayout">
+                  {selectedCoffee &&
+                    <motion.div
+                      key={`detail-mobile-${selectedCoffee.id}`}
+                      layoutId={`coffee-card-${selectedCoffee.id}`}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, scale: 0.95 }}
+                      transition={{ duration: 0.4 }}
+                      className="mt-8">
+
+                      <div className="border border-serra-gold/20 rounded-lg p-6 md:p-8 bg-serra-black/80 backdrop-blur">
+                        <div className="flex flex-col gap-8 items-center">
+                          <motion.div
+                            layoutId={`coffee-image-${selectedCoffee.id}`}
+                            className="w-full flex justify-center"
+                          >
+                            <img
+                              src={packImages[selectedCoffee.color]}
+                              alt={`Detalhe da Embalagem ${selectedCoffee.name}`}
+                              className="w-full max-w-[280px] h-auto object-cover rounded shadow-[0_0_30px_rgba(191,155,75,0.15)]"
+                            />
+                          </motion.div>
+                          <CoffeeDetails coffee={selectedCoffee} onNext={handleNext} onPrev={handlePrev} />
+                        </div>
+                      </div>
+                    </motion.div>
+                  }
+                </AnimatePresence>
+              </div>)
+          }
+        </div>
       </div>
     </section>);
 
@@ -167,45 +233,45 @@ const FeaturedCoffees = () => {
 /* ---------- Detail sub-component ---------- */
 import type { Coffee } from "@/data/products";
 
-const CoffeeDetails = ({ coffee }: { coffee: Coffee; }) =>
-  <div className="border border-serra-gold/20 rounded-lg p-8 bg-serra-black/80 backdrop-blur">
-    <div className="flex flex-col md:flex-row gap-8 items-start">
-      <div className="flex-1 space-y-4">
-        <p className="font-body text-serra-gold text-xs uppercase tracking-[0.3em]">
-          {coffee.region}
-        </p>
-        <h3 className="font-blackletter text-4xl text-serra-offwhite">
-          {coffee.name}
-        </h3>
-        <p className="font-body text-sm text-serra-offwhite/70">
-          Produtor: {coffee.producer} &bull; {coffee.process} &bull;{" "}
-          {coffee.altitude}
-        </p>
+const CoffeeDetails = ({ coffee, onNext, onPrev }: { coffee: Coffee; onNext: () => void; onPrev: () => void; }) =>
+  <div className="flex flex-col gap-6 w-full">
+    <div className="space-y-4">
+      <p className="font-body text-serra-gold text-xs uppercase tracking-[0.3em]">
+        {coffee.region}
+      </p>
+      <h3 className="font-blackletter text-4xl lg:text-5xl text-serra-offwhite">
+        {coffee.name}
+      </h3>
+      <p className="font-body text-sm text-serra-offwhite/70">
+        Produtor: {coffee.producer} &bull; {coffee.process} &bull;{" "}
+        {coffee.altitude}
+      </p>
 
-        {/* Sensory notes – staggered animation */}
-        <div className="flex gap-2 flex-wrap pt-2">
-          {coffee.notes.map((note, i) =>
-            <motion.span
-              key={note}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1, duration: 0.3 }}
-              className="font-body text-xs uppercase tracking-wider text-serra-gold border border-serra-gold/30 px-3 py-1 rounded-full">
+      {/* Sensory notes */}
+      <div className="flex gap-2 flex-wrap pt-2">
+        {coffee.notes.map((note, i) =>
+          <motion.span
+            key={note}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: i * 0.1, duration: 0.3 }}
+            className="font-body text-xs uppercase tracking-wider text-serra-gold border border-serra-gold/30 px-3 py-1 rounded-full">
 
-              {note}
-            </motion.span>
-          )}
-        </div>
-
-        <p className="font-body text-serra-offwhite/70 leading-relaxed text-sm pt-2">
-          {coffee.description}
-        </p>
+            {note}
+          </motion.span>
+        )}
       </div>
 
-      <div className="flex flex-col items-center gap-4">
+      <p className="font-body text-serra-offwhite/70 leading-relaxed text-base pt-2">
+        {coffee.description}
+      </p>
+    </div>
+
+    <div className="flex flex-col items-start gap-6 border-t border-serra-gold/20 pt-6 mt-2">
+      <div className="flex flex-row w-full justify-between items-center gap-4 flex-wrap">
         {/* Score */}
         {coffee.score &&
-          <div className="text-center">
+          <div className="text-left">
             <p className="font-body text-xs text-serra-gold uppercase tracking-widest mb-1">
               Pontuação SCA
             </p>
@@ -218,7 +284,7 @@ const CoffeeDetails = ({ coffee }: { coffee: Coffee; }) =>
         {/* Prices */}
         <div className="flex gap-6 mt-2">
           {coffee.weights.map((w) =>
-            <div key={w.weight} className="text-center">
+            <div key={w.weight} className="text-left">
               <p className="font-body text-xs text-serra-offwhite/50 uppercase">
                 {w.weight}
               </p>
@@ -228,16 +294,26 @@ const CoffeeDetails = ({ coffee }: { coffee: Coffee; }) =>
             </div>
           )}
         </div>
+      </div>
 
-        {/* CTA */}
-        <a
-          href="https://wa.me/5500000000000"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-4 inline-block font-body text-sm uppercase tracking-widest bg-serra-green text-primary-foreground px-8 py-3 hover:bg-serra-gold hover:text-serra-black transition-all duration-300">
+      {/* CTA */}
+      <a
+        href="https://wa.me/5500000000000"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="w-full text-center mt-2 inline-block font-body text-sm uppercase tracking-widest bg-serra-green text-primary-foreground px-8 py-4 hover:bg-serra-gold hover:text-serra-black transition-all duration-300">
 
-          Peça no WhatsApp
-        </a>
+        Pedir Este Café →
+      </a>
+
+      {/* Navigation */}
+      <div className="flex justify-between w-full mt-4 pt-6 border-t border-serra-gold/10">
+        <button onClick={onPrev} className="flex items-center gap-2 text-serra-gold/70 hover:text-serra-gold transition-colors font-body text-sm uppercase tracking-widest">
+          <ChevronLeft size={16} /> Anterior
+        </button>
+        <button onClick={onNext} className="flex items-center gap-2 text-serra-gold/70 hover:text-serra-gold transition-colors font-body text-sm uppercase tracking-widest">
+          Próximo <ChevronRight size={16} />
+        </button>
       </div>
     </div>
   </div>;

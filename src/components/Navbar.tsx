@@ -6,8 +6,9 @@ import logo from "@/assets/logo-pe-de-serra.jpg";
 
 const navLinks = [
   { label: "Início", href: "/" },
-  { label: "Nossos Cafés", href: "/cafes" },
+  { label: "Nossos cafés", href: "/cafes" },
   { label: "Sobre", href: "/sobre" },
+  { label: "Dúvidas", href: "/fac" },
   { label: "Contato", href: "#contato" },
 ];
 
@@ -40,9 +41,9 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
         <Link to="/" className="flex items-center">
-          <img 
-            src={logo} 
-            alt="Pé de Serra - Torra de Café" 
+          <img
+            src={logo}
+            alt="Pé de Serra - Torra de Café"
             className="h-12 md:h-14 w-auto"
           />
         </Link>
@@ -50,44 +51,68 @@ const Navbar = () => {
         {/* Menu toggle - todas as telas */}
         <button
           className="text-primary-foreground"
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={() => setIsOpen(true)}
           aria-label="Menu"
         >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
+          <Menu size={32} />
         </button>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile menu (Drawer) */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="bg-serra-black/95 backdrop-blur-md overflow-hidden"
-          >
-            <div className="px-6 py-4 flex flex-col gap-4">
-              {navLinks.map((link) =>
-                link.href.startsWith("#") ? (
-                  <button
-                    key={link.label}
-                    onClick={() => handleClick(link.href)}
-                    className="text-primary-foreground/80 hover:text-serra-gold transition-colors text-sm font-body uppercase tracking-widest text-left"
-                  >
-                    {link.label}
-                  </button>
-                ) : (
-                  <Link
-                    key={link.label}
-                    to={link.href}
-                    className="text-primary-foreground/80 hover:text-serra-gold transition-colors text-sm font-body uppercase tracking-widest"
-                  >
-                    {link.label}
-                  </Link>
-                )
-              )}
-            </div>
-          </motion.div>
+          <>
+            {/* Backdrop overlay */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="fixed inset-0 bg-serra-black/60 backdrop-blur-sm z-[60]"
+              onClick={() => setIsOpen(false)}
+            />
+
+            {/* Panel */}
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "tween", duration: 0.4, ease: "easeOut" }}
+              className="fixed top-0 right-0 bottom-0 w-[300px] h-[100dvh] bg-serra-black/60 backdrop-blur-xl border-l border-white/10 z-[70] shadow-2xl flex flex-col"
+            >
+              <div className="flex justify-end p-6">
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="text-primary-foreground/70 hover:text-serra-gold transition-colors p-2"
+                >
+                  <X size={32} />
+                </button>
+              </div>
+
+              <div className="flex flex-col gap-8 px-10 pt-12">
+                {navLinks.map((link) =>
+                  link.href.startsWith("#") ? (
+                    <button
+                      key={link.label}
+                      onClick={() => handleClick(link.href)}
+                      className="text-primary-foreground/90 hover:text-serra-gold transition-colors text-[22px] font-body font-light text-left"
+                    >
+                      {link.label}
+                    </button>
+                  ) : (
+                    <Link
+                      key={link.label}
+                      to={link.href}
+                      className="text-primary-foreground/90 hover:text-serra-gold transition-colors text-[22px] font-body font-light"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {link.label}
+                    </Link>
+                  )
+                )}
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </nav>

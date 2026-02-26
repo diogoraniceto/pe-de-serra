@@ -22,7 +22,7 @@ const PricingSection = () => {
             Produtos
           </p>
           <h2 className="font-blackletter text-5xl md:text-6xl text-foreground">
-            nossos cafés
+            Nossos cafés
           </h2>
         </motion.div>
 
@@ -81,7 +81,7 @@ const PricingSection = () => {
                   rel="noopener noreferrer"
                   className="block text-center font-body text-xs uppercase tracking-widest bg-serra-green text-primary-foreground py-3 hover:bg-serra-gold hover:text-serra-black transition-all duration-300"
                 >
-                  Peça no WhatsApp
+                  Pedir no WhatsApp →
                 </a>
               </div>
             </motion.div>

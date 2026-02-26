@@ -2,8 +2,7 @@ import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import producerBw from "@/assets/producer-bw.jpg";
-import roasting from "@/assets/roasting.jpg";
+import roasting from "@/assets/roasting-new.jpg";
 import heroFarm from "@/assets/hero-farm.jpg";
 
 const values = [
@@ -31,10 +30,10 @@ const SobrePage = () => {
             Nossa História
           </p>
           <h1 className="font-blackletter text-5xl md:text-7xl text-primary-foreground mb-6">
-            sobre nós
+            Sobre nós
           </h1>
           <p className="font-body text-primary-foreground/70 max-w-xl mx-auto">
-            Conheça a história por trás de cada xícara de café Pé de Serra.
+            Nascemos do respeito à terra e da busca pelo café perfeito. Conheça a jornada que traz a alma das montanhas até você.
           </p>
         </div>
       </section>
@@ -54,18 +53,13 @@ const SobrePage = () => {
               Fábio, o Barista
             </h2>
             <p className="font-body text-muted-foreground leading-relaxed mb-6">
-              A Pé de Serra nasceu da paixão de Fábio pelo café. Barista certificado e especialista
-              em torra, ele começou selecionando grãos diretamente de produtores familiares nas
-              montanhas de Minas Gerais.
+              A Pé de Serra nasceu da paixão do Fábio pelo café. Barista certificado e especialista em torra artesanal, ele iniciou sua jornada percorrendo as montanhas de Minas Gerais e do Espírito Santo para selecionar grãos diretamente de pequenos produtores familiares.
             </p>
             <p className="font-body text-muted-foreground leading-relaxed mb-6">
-              O nome "Pé de Serra" é uma homenagem às terras altas onde os melhores cafés crescem —
-              ao pé das serras do Caparaó e das Matas de Minas, onde altitude, clima e solo se unem
-              para criar grãos excepcionais.
+              O nome "Pé de Serra" é uma homenagem às terras altas onde os melhores cafés crescem. É no encontro do microclima do Caparaó e das Matas de Minas que a altitude e o cuidado manual se unem para criar grãos de qualidade excepcional.
             </p>
             <p className="font-body text-muted-foreground leading-relaxed">
-              Cada lote é pessoalmente selecionado, torrado e provado por Fábio através do processo
-              de cupping, garantindo que apenas cafés com pontuação acima de 80 pontos cheguem até você.
+              Cada lote é pessoalmente selecionado e provado pelo Fábio através de rigorosas sessões de cupping. Esse compromisso técnico garante que apenas cafés com pontuação acima de 85 pontos SCA — o padrão de excelência internacional — cheguem até o seu ritual diário.
             </p>
           </motion.div>
 
@@ -83,44 +77,6 @@ const SobrePage = () => {
         </div>
       </section>
 
-      {/* Producer */}
-      <section className="bg-serra-green py-32 px-6">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
-            <img
-              src={producerBw}
-              alt="Produtor familiar"
-              className="w-full h-[500px] object-cover grayscale contrast-125"
-            />
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
-            <p className="font-body text-serra-gold text-sm uppercase tracking-[0.3em] mb-4">
-              Parceria
-            </p>
-            <h2 className="font-blackletter text-5xl text-primary-foreground mb-8">
-              produtores familiares
-            </h2>
-            <p className="font-body text-primary-foreground/80 leading-relaxed mb-6">
-              Acreditamos no comércio direto e justo. Cada produtor parceiro recebe valor justo pelo
-              seu trabalho, e juntos construímos uma cadeia de café mais sustentável e transparente.
-            </p>
-            <p className="font-body text-primary-foreground/80 leading-relaxed">
-              Visitamos pessoalmente cada fazenda, conhecemos as famílias e acompanhamos todo o
-              processo — da colheita ao beneficiamento. É assim que garantimos a qualidade e a
-              rastreabilidade de cada grão.
-            </p>
-          </motion.div>
-        </div>
-      </section>
 
       {/* Values */}
       <section className="bg-background py-32 px-6">
@@ -134,7 +90,7 @@ const SobrePage = () => {
             <p className="font-body text-serra-gold text-sm uppercase tracking-[0.3em] mb-4">
               Princípios
             </p>
-            <h2 className="font-blackletter text-5xl text-foreground">nossos valores</h2>
+            <h2 className="font-blackletter text-5xl text-foreground">Nossos valores</h2>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -165,7 +121,7 @@ const SobrePage = () => {
           viewport={{ once: true }}
         >
           <h2 className="font-script text-4xl text-foreground mb-6">
-            Quer conhecer nossos cafés?
+            Pronto para experimentar?
           </h2>
           <a
             href="https://wa.me/5500000000000"
@@ -173,7 +129,7 @@ const SobrePage = () => {
             rel="noopener noreferrer"
             className="inline-block font-body text-sm uppercase tracking-widest bg-serra-green text-primary-foreground px-10 py-4 hover:bg-serra-gold hover:text-serra-black transition-all duration-300"
           >
-            Fale Conosco no WhatsApp
+            fale conosco no Whatsapp
           </a>
         </motion.div>
       </section>

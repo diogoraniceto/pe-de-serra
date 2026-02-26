@@ -55,9 +55,8 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="font-body text-primary-foreground/80 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">Cafés especiais das montanhas.
-          <br />
-          Do produtor familiar à sua xícara.
+          className="font-body text-primary-foreground/80 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
+          Cafés de altitude colhidos à mão. O legado das montanhas, torrado com precisão. Do produtor familiar para a sua xícara.
         </motion.p>
 
         <motion.div
@@ -69,7 +68,7 @@ const HeroSection = () => {
             to="/cafes"
             className="inline-block font-body text-sm uppercase tracking-widest border-2 border-serra-gold text-serra-gold px-8 py-4 hover:bg-serra-gold hover:text-serra-black transition-all duration-300">
 
-            Conheça Nossos Cafés →
+            Conheça nossos cafés →
           </Link>
         </motion.div>
       </div>

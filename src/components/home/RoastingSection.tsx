@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import roasting from "@/assets/roasting.jpg";
+import baristaVideo from "@/assets/barista_torra.mp4";
 
 const RoastingSection = () => {
   return (
@@ -14,7 +14,7 @@ const RoastingSection = () => {
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
         >
-          <source src="https://uaxraccxizldcvuwjitt.supabase.co/storage/v1/object/public/app/0208.mp4" type="video/mp4" />
+          <source src={baristaVideo} type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-serra-black/70" />
       </div>
@@ -30,22 +30,19 @@ const RoastingSection = () => {
             Barista & Torrador
           </p>
           <h2 className="font-blackletter text-5xl md:text-6xl text-primary-foreground mb-8">
-            arte da torra
+            Arte da torra
           </h2>
           <p className="font-body text-primary-foreground/80 leading-relaxed mb-6">
-            Fábio é barista certificado e especialista em torra artesanal. Cada lote é cuidadosamente
-            torrado para revelar as características únicas de cada origem — das notas achocolatadas
-            do Caparaó aos tons florais de Matas de Minas.
+            Fábio é barista certificado e especialista em torra artesanal. Cada lote é cuidadosamente torrado para revelar as características únicas de cada origem — das notas achocolatadas do Caparaó aos tons florais de Matas de Minas.
           </p>
           <p className="font-body text-primary-foreground/80 leading-relaxed mb-8">
-            O processo de cupping (degustação técnica) garante que apenas grãos com pontuação acima
-            de 80 pontos cheguem até você. Torra fresca, sob demanda, para o máximo de frescor.
+            O processo de cupping (degustação técnica) garante que apenas grãos com pontuação acima de 80 pontos cheguem até você. Torra artesanal sob demanda: o intervalo exato entre o mestre torrador e o seu ritual.
           </p>
           <Link
             to="/sobre"
             className="inline-block font-body text-sm uppercase tracking-widest border-2 border-serra-gold text-serra-gold px-8 py-3 hover:bg-serra-gold hover:text-serra-black transition-all duration-300"
           >
-            Saiba Mais
+            Ver o processo de torra
           </Link>
         </motion.div>
 

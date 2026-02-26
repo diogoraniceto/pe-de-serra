@@ -9,13 +9,13 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Brand */}
           <div>
-            <img 
-              src={logo} 
-              alt="Pé de Serra - Torra de Café" 
+            <img
+              src={logo}
+              alt="Pé de Serra - Torra de Café"
               className="h-16 w-auto mb-4"
             />
             <p className="font-body text-primary-foreground/70 text-sm leading-relaxed">
-              Cafés especiais das montanhas de Minas Gerais e Espírito Santo. Do produtor familiar à sua xícara.
+              Cafés de altitude colhidos à mão. O legado das montanhas, torrado com precisão. Do produtor familiar para a sua xícara.
             </p>
           </div>
 
@@ -26,6 +26,7 @@ const Footer = () => {
               <Link to="/" className="text-primary-foreground/70 hover:text-serra-gold transition-colors text-sm font-body">Início</Link>
               <Link to="/cafes" className="text-primary-foreground/70 hover:text-serra-gold transition-colors text-sm font-body">Nossos Cafés</Link>
               <Link to="/sobre" className="text-primary-foreground/70 hover:text-serra-gold transition-colors text-sm font-body">Sobre Nós</Link>
+              <Link to="/fac" className="text-primary-foreground/70 hover:text-serra-gold transition-colors text-sm font-body">Dúvidas Frequentes</Link>
             </div>
           </div>
 

@@ -31,23 +31,19 @@ const ProducerSpotlight = () => {
         duration: 0.8
       }}>
         <p className="font-body text-serra-gold text-sm uppercase tracking-[0.3em] mb-2">
-          Producer Spotlight
+          Raízes
         </p>
         <h2 className="font-script text-5xl md:text-6xl text-foreground mb-8">
-          Nossos Produtores
+          Nossos produtores
         </h2>
         <p className="font-body text-muted-foreground leading-relaxed mb-6">
-          Por trás de cada grão, existe uma família. Trabalhamos diretamente com produtores
-          familiares das montanhas de Minas Gerais e Espírito Santo, valorizando o conhecimento passado de geração
-          em geração.
+          Por trás de cada grão, existe uma família. Trabalhamos diretamente com produtores familiares das montanhas de Minas Gerais e Espírito Santo, valorizando o conhecimento passado de geração em geração.
         </p>
         <p className="font-body text-muted-foreground leading-relaxed mb-8">
-          Nossos parceiros — Emílio Horst de Iúna, Eduardo Cerqueira de Manhuaçu e Gabriel Protázio
-          de Forquilha do Rio — cultivam café com práticas sustentáveis, respeitando a terra e as
-          tradições.
+          Nossos parceiros — Emílio Horst de Iúna, Eduardo Cerqueira de Manhuaçu e Gabriel Protázio de Forquilha do Rio — cultivam café com práticas sustentáveis, respeitando a terra e as tradições.
         </p>
         <Link to="/sobre" className="inline-block font-body text-sm uppercase tracking-widest border-2 border-foreground text-foreground px-8 py-3 hover:bg-foreground hover:text-background transition-all duration-300">
-          Conheça os Produtores
+          Nossa história
         </Link>
       </motion.div>
     </div>
