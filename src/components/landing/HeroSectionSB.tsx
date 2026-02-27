@@ -63,14 +63,14 @@ const HeroSectionSB = () => {
 
             {/* Scroll indicator */}
             <motion.div
-                className="absolute bottom-8 left-1/2 -translate-x-1/2 text-serra-gold/50 flex flex-col items-center gap-2 cursor-pointer"
+                className="absolute bottom-8 left-0 w-full text-serra-gold/50 flex flex-col items-center gap-2 cursor-pointer"
                 animate={{ y: [0, 10, 0] }}
                 transition={{ repeat: Infinity, duration: 2 }}
                 onClick={() => {
                     window.scrollBy({ top: window.innerHeight - 100, behavior: "smooth" });
                 }}
             >
-                <span className="font-body text-[10px] uppercase tracking-widest text-gray-400 text-center">Descubra o diferencial</span>
+                <span className="font-body text-[10px] uppercase tracking-[0.2em] text-gray-400 text-center">Descubra o diferencial</span>
                 <ChevronDown size={24} className="text-serra-gold" />
             </motion.div>
         </section>
