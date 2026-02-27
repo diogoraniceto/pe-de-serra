@@ -62,14 +62,24 @@ const FeaturedCoffees = () => {
   };
 
   return (
-    <section className="bg-serra-black py-32 px-6 overflow-hidden">
+    <section className="bg-[#0D0D0D] pt-48 pb-32 px-6 overflow-hidden relative">
+      {/* Subtle technical divider */}
+      <div className="absolute top-0 left-0 right-0 h-[1px] bg-white/10" />
+
       <div className="max-w-7xl mx-auto">
+        {/* Transition text line */}
+        <div className="mb-24 pt-8">
+          <p className="font-body text-serra-offwhite/40 text-[11px] md:text-xs tracking-[0.2em] uppercase border-l border-white/20 pl-4">
+            Da técnica à xícara: explore nossos lotes atuais.
+          </p>
+        </div>
+
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16">
+          className="text-left mb-16">
 
           <p className="font-body text-serra-gold text-sm uppercase tracking-[0.3em] mb-4">
             Destaques
