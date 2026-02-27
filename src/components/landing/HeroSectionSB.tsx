@@ -70,7 +70,7 @@ const HeroSectionSB = () => {
                     window.scrollBy({ top: window.innerHeight - 100, behavior: "smooth" });
                 }}
             >
-                <span className="font-body text-[10px] uppercase tracking-widest text-gray-400">Descubra o diferencial</span>
+                <span className="font-body text-[10px] uppercase tracking-widest text-gray-400 text-center">Descubra o diferencial</span>
                 <ChevronDown size={24} className="text-serra-gold" />
             </motion.div>
         </section>
