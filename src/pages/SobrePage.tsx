@@ -6,7 +6,7 @@ import roasting from "@/assets/roasting-new.jpg";
 import heroFarm from "@/assets/hero-farm.jpg";
 
 const values = [
-  { title: "Qualidade", description: "Apenas grãos com pontuação acima de 80 pontos SCA." },
+  { title: "Qualidade", description: "Apenas grãos com pontuação acima de 85 pontos SCA." },
   { title: "Origem", description: "Direto dos produtores familiares do Caparaó e Matas de Minas." },
   { title: "Família", description: "Fortalecemos comunidades rurais valorizando o trabalho artesanal." },
   { title: "Frescor", description: "Torra sob demanda — seu café é torrado após o pedido." },
@@ -44,16 +44,16 @@ const SobrePage = () => {
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
           >
             <p className="font-body text-serra-gold text-sm uppercase tracking-[0.3em] mb-4">
               O Início
             </p>
             <h2 className="font-script text-5xl text-foreground mb-8">
-              Fábio, o Barista
+              Fábio, Barista & Mestre de Torra
             </h2>
             <p className="font-body text-muted-foreground leading-relaxed mb-6">
-              A Pé de Serra nasceu da paixão do Fábio pelo café. Barista certificado e especialista em torra artesanal, ele iniciou sua jornada percorrendo as montanhas de Minas Gerais e do Espírito Santo para selecionar grãos diretamente de pequenos produtores familiares.
+              A Pé de Serra nasceu da paixão do Fábio pelo café. Como Barista certificado e Mestre de Torra, ele iniciou sua jornada percorrendo as montanhas de Minas Gerais e do Espírito Santo para selecionar grãos diretamente de pequenos produtores familiares.
             </p>
             <p className="font-body text-muted-foreground leading-relaxed mb-6">
               O nome "Pé de Serra" é uma homenagem às terras altas onde os melhores cafés crescem. É no encontro do microclima do Caparaó e das Matas de Minas que a altitude e o cuidado manual se unem para criar grãos de qualidade excepcional.
@@ -66,7 +66,7 @@ const SobrePage = () => {
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
           >
             <img
               src={roasting}
@@ -84,7 +84,7 @@ const SobrePage = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             className="text-center mb-16"
           >
             <p className="font-body text-serra-gold text-sm uppercase tracking-[0.3em] mb-4">
@@ -99,7 +99,7 @@ const SobrePage = () => {
                 key={v.title}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false }}
                 transition={{ delay: i * 0.1 }}
                 className="text-center p-6 border border-border hover:border-serra-gold transition-colors"
               >
@@ -118,7 +118,7 @@ const SobrePage = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
         >
           <h2 className="font-script text-4xl text-foreground mb-6">
             Pronto para experimentar?

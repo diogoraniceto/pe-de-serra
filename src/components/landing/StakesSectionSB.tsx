@@ -13,7 +13,7 @@ const StakesSectionSB = () => {
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
+                        viewport={{ once: false }}
                         className="bg-red-950/10 border border-red-900/20 p-8 rounded-sm"
                     >
                         <h3 className="font-script text-3xl text-gray-400 mb-6 flex items-center gap-3">
@@ -44,7 +44,7 @@ const StakesSectionSB = () => {
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
+                        viewport={{ once: false }}
                         transition={{ delay: 0.2 }}
                         className="bg-serra-gold/5 border border-serra-gold/20 p-8 rounded-sm relative overflow-hidden"
                     >
@@ -92,37 +92,41 @@ const StakesSectionSB = () => {
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                        {/* Pacote 250g */}
+                        {/* Pacote 250g — Mais Vendido */}
                         <motion.div
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            className="bg-serra-black border border-white/10 p-10 flex flex-col items-center text-center rounded-sm hover:border-serra-gold/40 transition-colors"
+                            viewport={{ once: false }}
+                            className="bg-serra-gold/5 border-2 border-serra-gold p-10 flex flex-col items-center text-center rounded-sm relative scale-100 md:scale-105 shadow-[0_0_50px_rgba(202,174,124,0.1)] z-10"
                         >
-                            <h3 className="font-body text-xs uppercase tracking-[0.2em] text-gray-400 mb-2">Qualquer Variedade</h3>
+                            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 py-1 bg-serra-gold text-serra-black font-body text-[10px] uppercase font-bold tracking-widest whitespace-nowrap">
+                                Mais Vendido
+                            </div>
+
+                            <h3 className="font-body text-xs uppercase tracking-[0.2em] text-serra-gold mb-2 mt-4">Qualquer Variedade</h3>
                             <div className="flex items-baseline gap-2 mb-6">
                                 <span className="font-script text-5xl text-white">250g</span>
                             </div>
-                            <p className="font-body text-sm text-gray-400 mb-8 w-full border-b border-white/10 pb-8">
+                            <p className="font-body text-sm text-gray-300 mb-8 w-full border-b border-serra-gold/20 pb-8">
                                 Ideal para descobrir seu novo sabor favorito. Aproximadamente 25 xícaras.
                             </p>
 
                             <div className="space-y-3 w-full mb-10">
                                 <div className="flex justify-between items-center text-sm font-body">
-                                    <span className="text-gray-300">Catucai Am.</span>
-                                    <span className="text-serra-gold">R$ 42,00</span>
+                                    <span className="text-white">Catucai Am.</span>
+                                    <span className="text-serra-gold font-bold">R$ 42,00</span>
                                 </div>
                                 <div className="flex justify-between items-center text-sm font-body">
-                                    <span className="text-gray-300">Catucai 44</span>
-                                    <span className="text-serra-gold">R$ 45,00</span>
+                                    <span className="text-white">Catucai 44</span>
+                                    <span className="text-serra-gold font-bold">R$ 45,00</span>
                                 </div>
                                 <div className="flex justify-between items-center text-sm font-body">
-                                    <span className="text-gray-300">Arara</span>
-                                    <span className="text-serra-gold">R$ 48,00</span>
+                                    <span className="text-white">Arara</span>
+                                    <span className="text-serra-gold font-bold">R$ 48,00</span>
                                 </div>
                                 <div className="flex justify-between items-center text-sm font-body">
-                                    <span className="text-gray-300">Catuaí 44</span>
-                                    <span className="text-serra-gold">R$ 52,00</span>
+                                    <span className="text-white">Catuaí 44</span>
+                                    <span className="text-serra-gold font-bold">R$ 52,00</span>
                                 </div>
                             </div>
 
@@ -130,49 +134,44 @@ const StakesSectionSB = () => {
                                 href="https://wa.me/5500000000000?text=Ol%C3%A1%21%20Gostaria%20de%20pedir%20o%20pacote%20de%20250g%20da%20Landing%20Page."
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="w-full bg-white text-serra-black hover:bg-gray-200 py-4 px-6 rounded-sm font-body font-bold text-sm uppercase tracking-widest flex items-center justify-center gap-2 transition-colors"
+                                className="w-full bg-serra-gold text-serra-black hover:bg-white hover:text-serra-black py-4 px-6 rounded-sm font-body font-bold text-sm uppercase tracking-widest flex items-center justify-center gap-2 transition-all shadow-[0_0_20px_rgba(202,174,124,0.3)] hover:shadow-[0_0_30px_rgba(202,174,124,0.5)]"
                             >
                                 <MessageCircle size={18} />
                                 Pedir 250g no WhatsApp
                             </a>
                         </motion.div>
 
-                        {/* Pacote 500g */}
+                        {/* Pacote 500g — Melhor Custo-Benefício */}
                         <motion.div
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
+                            viewport={{ once: false }}
                             transition={{ delay: 0.2 }}
-                            className="bg-serra-gold/5 border-2 border-serra-gold p-10 flex flex-col items-center text-center rounded-sm relative scale-100 md:scale-105 shadow-[0_0_50px_rgba(202,174,124,0.1)] z-10"
+                            className="bg-serra-black border border-white/10 p-10 flex flex-col items-center text-center rounded-sm hover:border-serra-gold/40 transition-colors"
                         >
-                            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 py-1 bg-serra-gold text-serra-black font-body text-[10px] uppercase font-bold tracking-widest whitespace-nowrap">
-                                Melhor Custo-Benefício
-                            </div>
-
-                            <h3 className="font-body text-xs uppercase tracking-[0.2em] text-serra-gold mb-2 mt-4">Qualquer Variedade</h3>
                             <div className="flex items-baseline gap-2 mb-6">
                                 <span className="font-script text-5xl text-white">500g</span>
                             </div>
-                            <p className="font-body text-sm text-gray-300 mb-8 w-full border-b border-serra-gold/20 pb-8">
+                            <p className="font-body text-sm text-gray-400 mb-8 w-full border-b border-white/10 pb-8">
                                 Para quem já não consegue mais viver sem. Aproximadamente 50 xícaras.
                             </p>
 
                             <div className="space-y-3 w-full mb-10">
                                 <div className="flex justify-between items-center text-sm font-body">
-                                    <span className="text-white">Catucai Am.</span>
-                                    <span className="text-serra-gold font-bold">R$ 78,00</span>
+                                    <span className="text-gray-300">Catucai Am.</span>
+                                    <span className="text-serra-gold">R$ 78,00</span>
                                 </div>
                                 <div className="flex justify-between items-center text-sm font-body">
-                                    <span className="text-white">Catucai 44</span>
-                                    <span className="text-serra-gold font-bold">R$ 82,00</span>
+                                    <span className="text-gray-300">Catucai 44</span>
+                                    <span className="text-serra-gold">R$ 82,00</span>
                                 </div>
                                 <div className="flex justify-between items-center text-sm font-body">
-                                    <span className="text-white">Arara</span>
-                                    <span className="text-serra-gold font-bold">R$ 88,00</span>
+                                    <span className="text-gray-300">Arara</span>
+                                    <span className="text-serra-gold">R$ 88,00</span>
                                 </div>
                                 <div className="flex justify-between items-center text-sm font-body">
-                                    <span className="text-white">Catuaí 44</span>
-                                    <span className="text-serra-gold font-bold">R$ 95,00</span>
+                                    <span className="text-gray-300">Catuaí 44</span>
+                                    <span className="text-serra-gold">R$ 95,00</span>
                                 </div>
                             </div>
 
@@ -180,10 +179,10 @@ const StakesSectionSB = () => {
                                 href="https://wa.me/5500000000000?text=Ol%C3%A1%21%20Gostaria%20de%20pedir%20o%20pacote%20de%20500g%20da%20Landing%20Page."
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="w-full bg-serra-gold text-serra-black hover:bg-white hover:text-serra-black py-4 px-6 rounded-sm font-body font-bold text-sm uppercase tracking-widest flex items-center justify-center gap-2 transition-all shadow-[0_0_20px_rgba(202,174,124,0.3)] hover:shadow-[0_0_30px_rgba(202,174,124,0.5)]"
+                                className="w-full bg-white text-serra-black hover:bg-gray-200 py-4 px-6 rounded-sm font-body font-bold text-sm uppercase tracking-widest flex items-center justify-center gap-2 transition-colors"
                             >
                                 <MessageCircle size={18} />
-                                Garantir 500g — Melhor Valor
+                                Pedir 500g no WhatsApp
                             </a>
                         </motion.div>
                     </div>

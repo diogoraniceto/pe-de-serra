@@ -11,7 +11,7 @@ const ProducerSpotlight = () => {
         opacity: 1,
         x: 0
       }} viewport={{
-        once: true
+        once: false
       }} transition={{
         duration: 0.8
       }} className="relative">
@@ -26,7 +26,7 @@ const ProducerSpotlight = () => {
         opacity: 1,
         x: 0
       }} viewport={{
-        once: true
+        once: false
       }} transition={{
         duration: 0.8
       }}>

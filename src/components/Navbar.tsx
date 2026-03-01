@@ -2,11 +2,11 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import logo from "@/assets/logo-pe-de-serra.jpg";
-
+import logo from "@/assets/logo-pe-de-serra.png";
 const navLinks = [
   { label: "Início", href: "/" },
   { label: "Nossos cafés", href: "/cafes" },
+  { label: "O Ritual", href: "/ritual" },
   { label: "Sobre", href: "/sobre" },
   { label: "Dúvidas", href: "/fac" },
   { label: "Contato", href: "#contato" },
@@ -44,7 +44,7 @@ const Navbar = () => {
           <img
             src={logo}
             alt="Pé de Serra - Torra de Café"
-            className="h-12 md:h-14 w-auto"
+            className="h-20 md:h-24 w-auto -mt-2 -mb-2"
           />
         </Link>
 

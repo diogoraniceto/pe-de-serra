@@ -1,3 +1,8 @@
+import packAmarelo from "@/assets/pack-amarelo.jpg";
+import packVerde from "@/assets/pack-verde.jpg";
+import packRosa from "@/assets/pack-rosa.jpg";
+import packRoxo from "@/assets/pack-roxo.jpg";
+
 export interface Coffee {
   id: string;
   name: string;
@@ -31,7 +36,7 @@ export const coffees: Coffee[] = [
     ],
     score: 87,
     color: "amarelo",
-    image: "/pack-amarelo.pdf",
+    image: packAmarelo,
   },
   {
     id: "2",
@@ -48,7 +53,7 @@ export const coffees: Coffee[] = [
       { weight: "500g", price: "R$ 78,00" },
     ],
     color: "verde",
-    image: "/pack-verde.pdf",
+    image: packVerde,
   },
   {
     id: "3",
@@ -66,7 +71,7 @@ export const coffees: Coffee[] = [
     ],
     score: 85.25,
     color: "rosa",
-    image: "/pack-rosa.pdf",
+    image: packRosa,
   },
   {
     id: "4",
@@ -84,7 +89,7 @@ export const coffees: Coffee[] = [
     ],
     score: 86,
     color: "roxo",
-    image: "/pack-roxo.pdf",
+    image: packRoxo,
   },
 ];
 

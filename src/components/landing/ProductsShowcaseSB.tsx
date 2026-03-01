@@ -20,7 +20,7 @@ const ProductsShowcaseSB = () => {
                     <motion.h3
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
+                        viewport={{ once: false }}
                         className="text-serra-gold font-body text-xs md:text-sm uppercase tracking-[0.3em] mb-4"
                     >
                         Nossos Cafés
@@ -28,7 +28,7 @@ const ProductsShowcaseSB = () => {
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
+                        viewport={{ once: false }}
                         transition={{ delay: 0.1 }}
                         className="text-4xl md:text-5xl font-script text-white leading-tight mb-6"
                     >
@@ -37,7 +37,7 @@ const ProductsShowcaseSB = () => {
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
+                        viewport={{ once: false }}
                         transition={{ delay: 0.2 }}
                         className="text-gray-400 font-body text-base md:text-lg"
                     >
@@ -53,7 +53,7 @@ const ProductsShowcaseSB = () => {
                                 key={coffee.id}
                                 initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
+                                viewport={{ once: false }}
                                 transition={{ delay: i * 0.1 }}
                                 className="group relative bg-[#111111] border border-[#222222] rounded-[4px] hover:shadow-[0_8px_30px_rgb(0,0,0,0.5)] hover:-translate-y-0.5 transition-all duration-300 flex flex-col overflow-hidden text-left"
                             >

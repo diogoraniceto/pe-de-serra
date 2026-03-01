@@ -29,24 +29,24 @@ const GuideSectionSB = () => {
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
+                        viewport={{ once: false }}
                         transition={{ duration: 0.8 }}
                         className="space-y-6"
                     >
                         <h2 className="text-3xl md:text-5xl font-script text-serra-gold leading-tight">
-                            Nossa Família <br />Cuidando da Sua Xícara
+                            Do Produtor Familiar <br />Para a Sua Xícara
                         </h2>
                         <p className="text-gray-400 font-body text-lg leading-relaxed">
-                            Nós entendemos a frustração de comprar um "café gourmet" no supermercado e se decepcionar. É por isso que o Pé de Serra nasceu de produtores campeões diretamente para você.
+                            Fábio, barista e mestre de torra, seleciona pessoalmente cada lote junto a produtores familiares do Caparaó e Matas de Minas. Ele prova, aprova e torra sob demanda — para que você receba café fresco, com rastreabilidade da fazenda à sua mesa.
                         </p>
                         <ul className="space-y-4 pt-4">
                             <li className="flex items-center gap-4 text-gray-300 font-body">
                                 <MapPin className="text-serra-gold shrink-0" size={24} />
-                                <span>Cultivado em altas altitudes (+1000m) em Iúna-ES e Manhuaçu-MG.</span>
+                                <span>Direto de produtores familiares em altitudes acima de 1000m.</span>
                             </li>
                             <li className="flex items-center gap-4 text-gray-300 font-body">
                                 <Award className="text-serra-gold shrink-0" size={24} />
-                                <span>Grãos classificados acima de 85 pontos (SCA). Padrão de exportação.</span>
+                                <span>Grãos acima de 85 pontos SCA — cupping aprovado pelo Fábio.</span>
                             </li>
                         </ul>
                     </motion.div>
@@ -54,7 +54,7 @@ const GuideSectionSB = () => {
                     <motion.div
                         initial={{ opacity: 0, scale: 0.95 }}
                         whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
+                        viewport={{ once: false }}
                         transition={{ duration: 0.8 }}
                         className="relative"
                     >
@@ -90,7 +90,7 @@ const GuideSectionSB = () => {
                             key={index}
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
+                            viewport={{ once: false }}
                             transition={{ duration: 0.6, delay: index * 0.2 }}
                             className="relative z-10 flex flex-col items-center text-center p-6 bg-serra-black/50 border border-white/5 backdrop-blur-sm rounded-lg hover:border-serra-gold/30 transition-colors"
                         >

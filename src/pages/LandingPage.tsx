@@ -3,6 +3,7 @@ import HeroSectionSB from "@/components/landing/HeroSectionSB";
 import GuideSectionSB from "@/components/landing/GuideSectionSB";
 import ProductsShowcaseSB from "@/components/landing/ProductsShowcaseSB";
 import StakesSectionSB from "@/components/landing/StakesSectionSB";
+import FAQSectionSB from "@/components/landing/FAQSectionSB";
 
 const LandingPage = () => {
     return (
@@ -11,6 +12,7 @@ const LandingPage = () => {
             <GuideSectionSB />
             <ProductsShowcaseSB />
             <StakesSectionSB />
+            <FAQSectionSB />
         </div>
     );
 };

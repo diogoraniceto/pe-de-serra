@@ -5,7 +5,7 @@ import FAQSection from "@/components/home/FAQSection";
 
 const FacPage = () => {
     return (
-        <div className="font-body min-h-screen flex flex-col">
+        <div className="font-body min-h-screen flex flex-col bg-serra-cream">
             <Navbar />
             <main className="flex-1 pt-20">
                 <FAQSection />

@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ChevronDown, Coffee } from "lucide-react";
+import logoWatermark from "@/assets/logo-pe-de-serra 1.png";
 
 const HeroSectionSB = () => {
     const scrollToPricing = () => {
@@ -9,11 +10,17 @@ const HeroSectionSB = () => {
     return (
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-serra-black">
             {/* Background with overlay */}
-            <div className="absolute inset-0 z-0">
-                <div
-                    className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40 mix-blend-overlay"
-                    style={{ backgroundImage: `url('https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=2669&auto=format&fit=crop')` }}
-                />
+            <div className="absolute inset-0 z-0 bg-serra-black">
+                {/* Logo Translúcida centralizada como marca d'água */}
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 2, ease: "easeOut" }}
+                    className="absolute inset-0 pointer-events-none z-[1] flex items-start justify-center pt-[8vh]"
+                >
+                    <img src={logoWatermark} alt="" className="w-[80vw] max-w-[700px] h-auto object-contain opacity-[0.20]" />
+                </motion.div>
+
                 <div className="absolute inset-0 bg-gradient-to-b from-serra-black/80 via-serra-black/60 to-serra-black" />
             </div>
 
@@ -35,7 +42,7 @@ const HeroSectionSB = () => {
                     transition={{ duration: 0.6, delay: 0.1 }}
                     className="text-4xl md:text-6xl lg:text-7xl font-script text-white mb-6 leading-tight"
                 >
-                    A Experiência do <span className="text-serra-gold block mt-2">Café Especial Reserva</span>
+                    O Seu Novo Padrão: <span className="text-serra-gold block mt-2">Café Pé de Serra</span>
                 </motion.h1>
 
                 {/* The Problem (SB Passo 2) */}
@@ -45,7 +52,7 @@ const HeroSectionSB = () => {
                     transition={{ duration: 0.6, delay: 0.3 }}
                     className="text-lg md:text-xl text-gray-300 font-body max-w-2xl mx-auto mb-10 leading-relaxed"
                 >
-                    Notas de caramelo, chocolate e baunilha — direto de fazendas acima de 1.000m, torrado sob demanda e entregue fresco na sua porta.
+                    O legado das montanhas, torrado com precisão. Do produtor familiar para a sua xícara.
                 </motion.p>
 
                 {/* Primary CTA */}

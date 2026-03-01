@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Instagram, MessageCircle } from "lucide-react";
-import logo from "@/assets/logo-pe-de-serra.jpg";
+import logo from "@/assets/logo-pe-de-serra.png";
 
 const Footer = () => {
   return (
@@ -23,8 +23,8 @@ const Footer = () => {
           <div>
             <h4 className="font-body text-sm uppercase tracking-widest mb-4 text-serra-gold">Navegação</h4>
             <div className="flex flex-col gap-2">
-              <Link to="/" className="text-primary-foreground/70 hover:text-serra-gold transition-colors text-sm font-body">Início</Link>
               <Link to="/cafes" className="text-primary-foreground/70 hover:text-serra-gold transition-colors text-sm font-body">Nossos Cafés</Link>
+              <Link to="/ritual" className="text-primary-foreground/70 hover:text-serra-gold transition-colors text-sm font-body">O Ritual</Link>
               <Link to="/sobre" className="text-primary-foreground/70 hover:text-serra-gold transition-colors text-sm font-body">Sobre Nós</Link>
               <Link to="/fac" className="text-primary-foreground/70 hover:text-serra-gold transition-colors text-sm font-body">Dúvidas Frequentes</Link>
             </div>

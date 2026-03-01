@@ -9,7 +9,7 @@ const BrandSection = () => {
         <motion.div
           initial={{ opacity: 0, x: -40 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           transition={{ duration: 0.8 }}
         >
           <p className="font-body text-serra-gold text-sm uppercase tracking-[0.3em] mb-4">
@@ -35,7 +35,7 @@ const BrandSection = () => {
         <motion.div
           initial={{ opacity: 0, x: 40 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           transition={{ duration: 0.8 }}
           className="relative h-[600px] w-full"
         >

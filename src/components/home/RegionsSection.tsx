@@ -7,9 +7,9 @@ const regions = [
   {
     name: "Caparaó",
     image: regionCaparao,
-    description: "Altitude que beira as nuvens e o microclima único dão vida a cafés com acidez vibrante, revelando o brilho das frutas vermelhas e a persistência do melaço.",
-    altitude: "1000m - 1400m",
-    terroir: "Vulcânico e Frio"
+    description: "Altitude que beira as nuvens e o microclima único dão vida a cafés com acidez brilhante e cítrica, revelando doçura de mel e caldo de cana com o brilho das frutas amarelas.",
+    altitude: "1000m - 1500m",
+    terroir: "Clima de Altitude"
   },
   {
     name: "Matas de Minas",
@@ -27,7 +27,7 @@ const RegionsSection = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           className="text-center mb-16"
         >
           <p className="font-body text-serra-gold text-sm uppercase tracking-[0.3em] mb-4">
@@ -44,7 +44,7 @@ const RegionsSection = () => {
               key={region.name}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               transition={{ duration: 0.8, delay: i * 0.2 }}
               className="relative group overflow-hidden w-full h-[600px] md:h-[750px] flex items-center justify-center"
             >

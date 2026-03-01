@@ -15,7 +15,7 @@ const PricingSection = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           className="text-center mb-16"
         >
           <p className="font-body text-serra-gold text-sm uppercase tracking-[0.3em] mb-4">
@@ -32,7 +32,7 @@ const PricingSection = () => {
               key={coffee.id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               transition={{ delay: i * 0.1 }}
               className="border border-border hover:border-serra-gold transition-colors duration-300 group"
             >

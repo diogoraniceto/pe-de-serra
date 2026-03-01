@@ -23,20 +23,20 @@ const RoastingSection = () => {
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           transition={{ duration: 0.8 }}
         >
           <p className="font-body text-serra-gold text-sm uppercase tracking-[0.3em] mb-4">
-            Barista & Torrador
+            Barista & Mestre de Torra
           </p>
           <h2 className="font-blackletter text-5xl md:text-6xl text-primary-foreground mb-8">
             Arte da torra
           </h2>
           <p className="font-body text-primary-foreground/80 leading-relaxed mb-6">
-            Fábio é barista certificado e especialista em torra artesanal. Cada lote é cuidadosamente torrado para revelar as características únicas de cada origem — das notas achocolatadas do Caparaó aos tons florais de Matas de Minas.
+            Fábio, nosso Barista e Mestre de Torra, conduz o processo com maestria. Cada lote é cuidadosamente desenhado e torrado para revelar o potencial máximo das características únicas de cada origem — da acidez cítrica e doçura de mel do Caparaó ao corpo achocolatado e caramelado de Matas de Minas.
           </p>
           <p className="font-body text-primary-foreground/80 leading-relaxed mb-8">
-            O processo de cupping (degustação técnica) garante que apenas grãos com pontuação acima de 80 pontos cheguem até você. Torra artesanal sob demanda: o intervalo exato entre o mestre torrador e o seu ritual.
+            A união entre o rigor do cupping (degustação técnica), que garante grãos sempre acima de 85 pontos, e a torra artesanal sob demanda cria a ponte perfeita. É o intervalo exato entre o cuidado do mestre e o seu ritual da xícara perfeita.
           </p>
           <Link
             to="/sobre"

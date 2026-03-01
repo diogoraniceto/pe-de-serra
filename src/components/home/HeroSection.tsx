@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { Link } from "react-router-dom";
-import heroFarm from "@/assets/hero-farm.jpg";
+import logoWatermark from "@/assets/logo-pe-de-serra 1.png";
 
 const HeroSection = () => {
   return (
@@ -31,43 +31,65 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-serra-black/60" />
       </div>
 
+      {/* Logo Translúcida centralizada na tela inteira */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 2, ease: "easeOut" }}
+        className="absolute inset-0 z-[1] pointer-events-none flex items-start justify-center pt-[8vh]"
+      >
+        <img src={logoWatermark} alt="" className="w-[80vw] max-w-[700px] h-auto object-contain opacity-[0.20]" />
+      </motion.div>
+
       {/* Content */}
-      <div className="relative z-10 text-center px-6 max-w-4xl">
+      <div className="relative z-10 w-full h-full flex flex-col justify-center items-center text-center px-6 max-w-4xl">
+
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="font-body text-serra-gold text-sm uppercase tracking-[0.3em] mb-6">CAFÉS ESPECIAIS • ES • MG
-
-
+          className="font-body text-serra-gold text-xs uppercase tracking-[0.3em] mb-2"
+        >
+          Cafés Especiais
         </motion.p>
 
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
-          className="font-script text-6xl md:text-8xl lg:text-9xl text-primary-foreground mb-6">
-
+          className="font-logo text-5xl md:text-7xl lg:text-8xl text-primary-foreground mb-3 uppercase tracking-[0.2em] leading-none"
+        >
           Pé de Serra
         </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.35 }}
+          className="font-body text-serra-gold/80 text-[11px] uppercase tracking-[0.4em] mb-8"
+        >
+          Espírito Santo • Minas Gerais
+        </motion.p>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="font-body text-primary-foreground/80 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
-          Cafés de altitude colhidos à mão. O legado das montanhas, torrado com precisão. Do produtor familiar para a sua xícara.
+          className="font-body text-primary-foreground/80 text-base md:text-lg max-w-xl mx-auto mb-10 leading-relaxed"
+        >
+          O legado das montanhas, torrado com precisão. Do produtor familiar para a sua xícara.
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8 }}>
-
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8 }}
+          className="z-20 relative"
+        >
           <Link
             to="/cafes"
-            className="inline-block font-body text-sm uppercase tracking-widest border-2 border-serra-gold text-serra-gold px-8 py-4 hover:bg-serra-gold hover:text-serra-black transition-all duration-300">
-
+            className="inline-block font-body text-sm uppercase tracking-widest bg-serra-gold text-serra-black font-semibold px-10 py-4 hover:bg-white hover:text-serra-black transition-all duration-300 shadow-[0_0_30px_rgba(202,174,124,0.3)] hover:shadow-[0_0_40px_rgba(255,255,255,0.3)]"
+          >
             Conheça nossos cafés →
           </Link>
         </motion.div>
