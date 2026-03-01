@@ -39,10 +39,10 @@ const RoastingSection = () => {
             A união entre o rigor do cupping (degustação técnica), que garante grãos sempre acima de 85 pontos, e a torra artesanal sob demanda cria a ponte perfeita. É o intervalo exato entre o cuidado do mestre e o seu ritual da xícara perfeita.
           </p>
           <Link
-            to="/sobre"
+            to="/ritual"
             className="inline-block font-body text-sm uppercase tracking-widest border-2 border-serra-gold text-serra-gold px-8 py-3 hover:bg-serra-gold hover:text-serra-black transition-all duration-300"
           >
-            Ver o processo de torra
+            Prepare a xícara perfeita
           </Link>
         </motion.div>
 
