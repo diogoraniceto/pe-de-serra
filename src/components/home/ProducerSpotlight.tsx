@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import produtoresBw from "@/assets/produtores-bw.png";
+import produtorEFabio from "@/assets/produtor_e_fabio.jpeg";
 const ProducerSpotlight = () => {
   return <section className="py-32 px-6 bg-[#ede8de]">
     <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -15,7 +15,7 @@ const ProducerSpotlight = () => {
       }} transition={{
         duration: 0.8
       }} className="relative">
-        <img src={produtoresBw} alt="Produtores de café familiar" className="w-full h-[500px] object-cover grayscale contrast-125" />
+        <img src={produtorEFabio} alt="Produtor e Fábio" className="w-full h-[500px] object-cover grayscale contrast-125" />
         <div className="absolute -top-4 -right-4 w-full h-full border-2 border-serra-gold -z-10" />
       </motion.div>
 

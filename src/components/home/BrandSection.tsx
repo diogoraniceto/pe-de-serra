@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import brandPour from "@/assets/brand-pour.jpg";
+import fabioCafe from "@/assets/fabio-cafe.png";
 
 const BrandSection = () => {
   return (
@@ -40,7 +40,7 @@ const BrandSection = () => {
           className="relative h-[600px] w-full"
         >
           <img
-            src={brandPour}
+            src={fabioCafe}
             alt="Barista preparando café com latte art"
             className="w-full h-full object-cover rounded-sm"
           />

@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import roasting from "@/assets/roasting-new.jpg";
+import fabioPreparo from "@/assets/fabio_preparo.jpeg";
 import heroFarm from "@/assets/hero-farm.jpg";
 
 const values = [
@@ -67,12 +67,17 @@ const SobrePage = () => {
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: false }}
+            className="relative"
           >
-            <img
-              src={roasting}
-              alt="Processo de torra artesanal"
-              className="w-full h-[500px] object-cover"
-            />
+            <div className="relative overflow-hidden rounded-sm">
+              <img
+                src={fabioPreparo}
+                alt="Fábio preparando café"
+                className="w-full h-[500px] object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-serra-black/40 via-transparent to-transparent pointer-events-none" />
+            </div>
+            <div className="absolute -top-4 -right-4 w-full h-full border-2 border-serra-gold/30 rounded-sm -z-10" />
           </motion.div>
         </div>
       </section>

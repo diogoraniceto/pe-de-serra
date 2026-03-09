@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { ChevronDown, Coffee } from "lucide-react";
 import logoWatermark from "@/assets/logo-pe-de-serra 1.png";
-
+import logo from "@/assets/logo-pe-de-serra.png";
 const HeroSectionSB = () => {
     const scrollToPricing = () => {
         document.getElementById("pricing-section")?.scrollIntoView({ behavior: "smooth" });
@@ -9,6 +9,10 @@ const HeroSectionSB = () => {
 
     return (
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-serra-black">
+            {/* Logo top-left */}
+            <div className="absolute top-0 left-0 z-20 px-6 py-3">
+                <img src={logo} alt="Pé de Serra - Torra de Café" className="h-20 md:h-24 w-auto" />
+            </div>
             {/* Background with overlay */}
             <div className="absolute inset-0 z-0 bg-serra-black">
                 {/* Logo Translúcida centralizada como marca d'água */}
@@ -40,9 +44,9 @@ const HeroSectionSB = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.1 }}
-                    className="text-4xl md:text-6xl lg:text-7xl font-script text-white mb-6 leading-tight"
+                    className="text-4xl md:text-6xl lg:text-7xl font-logo text-white mb-6 leading-tight uppercase tracking-[0.2em]"
                 >
-                    O Seu Novo Padrão: <span className="text-serra-gold block mt-2">Café Pé de Serra</span>
+                    Pé de Serra <span className="text-serra-gold block mt-2">O Seu Novo Padrão</span>
                 </motion.h1>
 
                 {/* The Problem (SB Passo 2) */}

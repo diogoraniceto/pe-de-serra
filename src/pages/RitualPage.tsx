@@ -8,27 +8,43 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 const steps = [
     {
         number: "01",
-        title: "O Bloom",
+        title: "Água",
         icon: <Droplets className="w-6 h-6" />,
         description:
-            "Despeje um pouco de água quente sobre o pó para despertar os aromas e liberar o CO₂ retido na torra fresca. Aguarde 30 segundos e observe o café \"respirar\" — é o sinal de frescor.",
-        detail: "30 segundos",
+            "Use sempre água filtrada ou mineral. 98% do café é água — ela influencia diretamente o sabor da sua bebida. Nunca use água fervendo; o ideal é entre 92°C e 96°C.",
+        detail: "Filtrada ou mineral",
     },
     {
         number: "02",
-        title: "Despejos Cíclicos",
-        icon: <CircleDot className="w-6 h-6" />,
+        title: "Proporção",
+        icon: <Scale className="w-6 h-6" />,
         description:
-            "Em vez de despejar toda a água de uma vez, faça de 3 a 4 despejos graduais e circulares. Isso garante o equilíbrio perfeito entre acidez, doçura e corpo na sua xícara.",
-        detail: "3 a 4 ciclos",
+            "Use de 7 a 10 gramas de café para cada 100ml de água. Uma colher de sopa cheia tem aproximadamente 12 a 15 gramas. Exemplo: 35g de café para 500ml de água.",
+        detail: "7-10g / 100ml",
     },
     {
         number: "03",
-        title: "A Paciência",
-        icon: <Timer className="w-6 h-6" />,
+        title: "Escaldar",
+        icon: <Flame className="w-6 h-6" />,
         description:
-            "Deixe a gravidade trabalhar. A água percola lentamente pelo café, revelando as notas sensoriais únicas de cada origem — caramelo do Caparaó, chocolate de Matas de Minas.",
-        detail: "2 a 3 minutos",
+            "Escalde o filtro de papel ou de pano antes de usar. Isso elimina impurezas da fabricação e evita que o filtro roube os óleos essenciais do café.",
+        detail: "Filtro limpo",
+    },
+    {
+        number: "04",
+        title: "Percolação",
+        icon: <CircleDot className="w-6 h-6" />,
+        description:
+            "Passe o café lentamente, fazendo de 3 a 4 infusões de água. Não jogue toda a água de uma vez — senão o café vai ficar ácido e sem corpo, porque no primeiro momento ele só libera compostos ácidos.",
+        detail: "3 a 4 infusões",
+    },
+    {
+        number: "05",
+        title: "Infusão",
+        icon: <Coffee className="w-6 h-6" />,
+        description:
+            "Nas primeiras infusões, despeje a água de forma circular para o café passar mais devagar e extrair bem a acidez e a doçura. Nas últimas, despeje de forma contínua no centro — assim o café passa mais rápido, evitando amargor por extração longa.",
+        detail: "Circular → Centro",
     },
 ];
 
@@ -42,8 +58,8 @@ const tips = [
     {
         icon: <Scale className="w-5 h-5 text-serra-gold" />,
         label: "Proporção",
-        value: "1 : 15",
-        note: "10g de café para 150ml de água",
+        value: "7-10g : 100ml",
+        note: "Ex: 35g de café para 500ml de água",
     },
     {
         icon: <Coffee className="w-5 h-5 text-serra-gold" />,
@@ -168,7 +184,7 @@ const RitualPage = () => {
                             Guia de Extração
                         </h2>
                         <p className="font-body text-primary-foreground/60 text-base max-w-xl mx-auto">
-                            Três passos simples que separam um café bom de um café inesquecível.
+                            Cinco passos que separam um café bom de um café inesquecível.
                         </p>
                     </motion.div>
 

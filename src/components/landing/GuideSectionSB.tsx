@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { CheckCircle2, ChevronRight, MapPin, Award, Truck } from "lucide-react";
+import produtorImg from "@/assets/produtor.jpeg";
 
 const GuideSectionSB = () => {
     const steps = [
@@ -34,7 +35,7 @@ const GuideSectionSB = () => {
                         className="space-y-6"
                     >
                         <h2 className="text-3xl md:text-5xl font-script text-serra-gold leading-tight">
-                            Do Produtor Familiar <br />Para a Sua Xícara
+                            Da escolha do grão <br />ao ponto da torra
                         </h2>
                         <p className="text-gray-400 font-body text-lg leading-relaxed">
                             Fábio, barista e mestre de torra, seleciona pessoalmente cada lote junto a produtores familiares do Caparaó e Matas de Minas. Ele prova, aprova e torra sob demanda — para que você receba café fresco, com rastreabilidade da fazenda à sua mesa.
@@ -60,8 +61,8 @@ const GuideSectionSB = () => {
                     >
                         <div className="aspect-[4/5] md:aspect-square rounded-sm overflow-hidden border border-white/10 relative">
                             <img
-                                src="https://images.unsplash.com/photo-1611162458324-aae1eb4129a4?q=80&w=2574&auto=format&fit=crop"
-                                alt="Produtor de café verificando os grãos"
+                                src={produtorImg}
+                                alt="Produtor de café segurando grãos"
                                 className="w-full h-full object-cover grayscale opacity-80 hover:grayscale-0 transition-all duration-700"
                             />
                             <div className="absolute inset-0 bg-gradient-to-tr from-serra-black/80 via-transparent to-transparent" />
