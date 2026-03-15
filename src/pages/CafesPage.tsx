@@ -6,6 +6,7 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import { coffees } from "@/data/products";
 
 import { Mountain, User, Beaker, Leaf, MapPin } from "lucide-react";
+import BackToHome from "@/components/BackToHome";
 
 type Region = "Todas" | "Espírito Santo" | "Minas Gerais";
 
@@ -35,7 +36,7 @@ const CafesPage = () => {
 
       {/* Hero */}
       <section className="bg-serra-green pt-32 pb-20 px-6">
-        <div className="max-w-7xl mx-auto text-center">
+        <div className="max-w-7xl mx-auto text-center relative">
           <p className="font-body text-serra-gold text-sm uppercase tracking-[0.3em] mb-4">
             Catálogo
           </p>
@@ -45,6 +46,9 @@ const CafesPage = () => {
           <p className="font-body text-primary-foreground/70 max-w-xl mx-auto">
             Lotes limitados. Altitude elevada. Torra fresca. Compare as especificações técnicas e escolha sua experiência sensorial definitiva.
           </p>
+          <div className="mt-8">
+            <BackToHome variant="light" />
+          </div>
         </div>
       </section>
 
@@ -82,20 +86,21 @@ const CafesPage = () => {
                 {/* Top accent line */}
                 <div className={`absolute top-0 left-0 right-0 h-[3px] ${theme.bg}`} />
 
-                <div className="p-6 flex-1 flex flex-col">
-                  {/* Header */}
-                  <div className="mb-6">
-                    <div className="flex items-center gap-2 mb-2">
-                      <MapPin size={14} className="text-muted-foreground" />
-                      <span className="font-body text-xs text-muted-foreground uppercase tracking-wider">{coffee.region}</span>
+                <div className="p-6 h-full flex flex-col">
+                  <div className="flex-1">
+                    {/* Header */}
+                    <div className="mb-6">
+                      <div className="flex items-center gap-2 mb-2">
+                        <MapPin size={14} className="text-muted-foreground" />
+                        <span className="font-body text-xs text-muted-foreground uppercase tracking-wider">{coffee.region}</span>
+                      </div>
+                      <h3 className="font-body font-medium text-xl text-foreground tracking-tight leading-tight">{coffee.name}</h3>
+                      {coffee.score && (
+                        <span className="inline-block mt-3 font-body text-[11px] font-medium text-foreground bg-black/5 dark:bg-white/10 px-2 py-1 rounded">
+                          {coffee.score} pts SCA
+                        </span>
+                      )}
                     </div>
-                    <h3 className="font-body font-medium text-xl text-foreground tracking-tight leading-tight">{coffee.name}</h3>
-                    {coffee.score && (
-                      <span className="inline-block mt-3 font-body text-[11px] font-medium text-foreground bg-black/5 dark:bg-white/10 px-2 py-1 rounded">
-                        {coffee.score} pts SCA
-                      </span>
-                    )}
-                  </div>
 
                   {/* Tech Specs */}
                   <div className="space-y-3 mb-6">
@@ -118,17 +123,18 @@ const CafesPage = () => {
                   </div>
 
                   {/* Sensory Notes */}
-                  <div className="mb-8">
-                    <p className="font-body text-[10px] text-muted-foreground mb-3 uppercase tracking-wider">Notas Sensoriais</p>
-                    <div className="flex flex-wrap gap-2">
-                      {coffee.notes.map((note) => (
-                        <span
-                          key={note}
-                          className={`font-body text-xs font-medium px-2 py-1 rounded-sm ${theme.lightBg} ${theme.text}`}
-                        >
-                          {note}
-                        </span>
-                      ))}
+                    <div className="mb-8">
+                      <p className="font-body text-[10px] text-muted-foreground mb-3 uppercase tracking-wider">Notas Sensoriais</p>
+                      <div className="flex flex-wrap gap-2">
+                        {coffee.notes.map((note) => (
+                          <span
+                            key={note}
+                            className={`font-body text-xs font-medium px-2 py-1 rounded-sm ${theme.lightBg} ${theme.text}`}
+                          >
+                            {note}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
 
@@ -144,7 +150,7 @@ const CafesPage = () => {
                     </div>
 
                     <a
-                      href="https://wa.me/5500000000000"
+                      href="https://wa.me/5527999823382"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="block w-full text-center font-body text-sm font-medium bg-foreground text-background py-3 rounded-[4px] hover:opacity-90 transition-opacity"

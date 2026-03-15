@@ -22,17 +22,30 @@ const FeaturedCoffees = () => {
   const isMobile = useIsMobile();
   const selectedCoffee = coffees.find((c) => c.id === selectedId);
   const currentIndex = selectedId ? coffees.findIndex(c => c.id === selectedId) : -1;
-  const containerRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const triggerRef = useRef<HTMLDivElement>(null);
 
-  // Aguarda até que 50% do container dos cards esteja visível na tela
-  const isInView = useInView(containerRef, { once: true, amount: 0.5 });
+  // Trigger opening when grid is 100% visible (1.0)
+  // Plus a 300px offset from the bottom (margin) to delay it further
+  const isTriggerVisible = useInView(triggerRef, {
+    once: false,
+    amount: 1.0,
+    margin: "0px 0px -150px 0px"
+  });
+  const isSectionVisible = useInView(sectionRef, { once: false, amount: 0.1 });
 
   useEffect(() => {
-    if (isInView && !selectedId && !hasAutoOpened) {
+    if (isTriggerVisible && !selectedId && !hasAutoOpened) {
       setSelectedId(coffees[0].id);
       setHasAutoOpened(true);
     }
-  }, [isInView, selectedId, hasAutoOpened]);
+
+    // Reseta quando a seção inteira sai da vista
+    if (!isSectionVisible && hasAutoOpened) {
+      setSelectedId(null);
+      setHasAutoOpened(false);
+    }
+  }, [isTriggerVisible, isSectionVisible, selectedId, hasAutoOpened]);
 
   const handleSelect = (id: string) => {
     setSelectedId(id);
@@ -62,7 +75,7 @@ const FeaturedCoffees = () => {
   };
 
   return (
-    <section className="bg-[#0D0D0D] pt-48 pb-32 px-6 overflow-hidden relative">
+    <section ref={sectionRef} className="bg-[#0D0D0D] pt-48 pb-32 px-6 overflow-hidden relative">
       {/* Subtle technical divider */}
       <div className="absolute top-0 left-0 right-0 h-[1px] bg-white/10" />
 
@@ -94,8 +107,9 @@ const FeaturedCoffees = () => {
 
           {/* Desktop/Tablet Grid */}
           {!isMobile ?
-            <div className="flex flex-col items-center" ref={containerRef}>
+            <div className="flex flex-col items-center">
               <div
+                ref={triggerRef}
                 className={`grid gap-4 md:gap-8 transition-all duration-500 grid-cols-4 max-w-5xl w-full`
                 }>
 
@@ -136,7 +150,7 @@ const FeaturedCoffees = () => {
               </div>
 
               {/* Desktop Detail Panel */}
-              <AnimatePresence mode="popLayout">
+              <AnimatePresence mode="wait">
                 {selectedCoffee &&
                   <motion.div
                     key={`detail-${selectedCoffee.id}`}
@@ -169,7 +183,7 @@ const FeaturedCoffees = () => {
             </div> : (
 
               /* Mobile: Horizontal scroll */
-              <div ref={containerRef}>
+              <div ref={triggerRef}>
                 <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 -mx-6 px-6 scrollbar-hide">
                   {coffees.map((coffee) => {
                     const isSelected = coffee.id === selectedId;
@@ -203,7 +217,7 @@ const FeaturedCoffees = () => {
                 </div>
 
                 {/* Mobile Detail Panel */}
-                <AnimatePresence mode="popLayout">
+                <AnimatePresence mode="wait">
                   {selectedCoffee &&
                     <motion.div
                       key={`detail-mobile-${selectedCoffee.id}`}
@@ -308,7 +322,7 @@ const CoffeeDetails = ({ coffee, onNext, onPrev }: { coffee: Coffee; onNext: () 
 
       {/* CTA */}
       <a
-        href="https://wa.me/5500000000000"
+        href="https://wa.me/5527999823382"
         target="_blank"
         rel="noopener noreferrer"
         className="w-full text-center mt-2 inline-block font-body text-sm uppercase tracking-widest bg-serra-green text-primary-foreground px-8 py-4 hover:bg-serra-gold hover:text-serra-black transition-all duration-300">

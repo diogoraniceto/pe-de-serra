@@ -60,53 +60,55 @@ const ProductsShowcaseSB = () => {
                                 {/* Top accent line */}
                                 <div className={`absolute top-0 left-0 right-0 h-[3px] ${theme.bg}`} />
 
-                                <div className="p-6 flex-1 flex flex-col">
-                                    {/* Header */}
-                                    <div className="mb-6">
-                                        <div className="flex items-center gap-2 mb-2">
-                                            <MapPin size={14} className="text-gray-400" />
-                                            <span className="font-body text-xs text-gray-400 uppercase tracking-wider">{coffee.region}</span>
-                                        </div>
-                                        <h3 className="font-body font-medium text-xl text-white tracking-tight leading-tight">{coffee.name}</h3>
-                                        {coffee.score && (
-                                            <span className="inline-block mt-3 font-body text-[11px] font-medium text-white bg-white/10 px-2 py-1 rounded">
-                                                {coffee.score} pts SCA
-                                            </span>
-                                        )}
-                                    </div>
-
-                                    {/* Tech Specs */}
-                                    <div className="space-y-3 mb-6">
-                                        <div className="flex items-center gap-3">
-                                            <User size={14} className="text-gray-400" />
-                                            <span className="font-body text-sm text-gray-300">{coffee.producer}</span>
-                                        </div>
-                                        <div className="flex items-center gap-3">
-                                            <Mountain size={14} className="text-gray-400" />
-                                            <span className="font-body text-sm text-gray-300">{coffee.altitude}</span>
-                                        </div>
-                                        <div className="flex items-center gap-3">
-                                            <Leaf size={14} className="text-gray-400" />
-                                            <span className="font-body text-sm text-gray-300">{coffee.variety}</span>
-                                        </div>
-                                        <div className="flex items-center gap-3">
-                                            <Beaker size={14} className="text-gray-400" />
-                                            <span className="font-body text-sm text-gray-300">{coffee.process}</span>
-                                        </div>
-                                    </div>
-
-                                    {/* Sensory Notes */}
-                                    <div className="mb-8">
-                                        <p className="font-body text-[10px] text-gray-500 mb-3 uppercase tracking-wider">Notas Sensoriais</p>
-                                        <div className="flex flex-wrap gap-2">
-                                            {coffee.notes.map((note) => (
-                                                <span
-                                                    key={note}
-                                                    className={`font-body text-xs font-medium px-2 py-1 rounded-sm ${theme.lightBg} ${theme.text}`}
-                                                >
-                                                    {note}
+                                <div className="p-6 h-full flex flex-col">
+                                    <div className="flex-1">
+                                        {/* Header */}
+                                        <div className="mb-6">
+                                            <div className="flex items-center gap-2 mb-2">
+                                                <MapPin size={14} className="text-gray-400" />
+                                                <span className="font-body text-xs text-gray-400 uppercase tracking-wider">{coffee.region}</span>
+                                            </div>
+                                            <h3 className="font-body font-medium text-xl text-white tracking-tight leading-tight">{coffee.name}</h3>
+                                            {coffee.score && (
+                                                <span className="inline-block mt-3 font-body text-[11px] font-medium text-white bg-white/10 px-2 py-1 rounded">
+                                                    {coffee.score} pts SCA
                                                 </span>
-                                            ))}
+                                            )}
+                                        </div>
+
+                                        {/* Tech Specs */}
+                                        <div className="space-y-3 mb-6">
+                                            <div className="flex items-center gap-3">
+                                                <User size={14} className="text-gray-400" />
+                                                <span className="font-body text-sm text-gray-300">{coffee.producer}</span>
+                                            </div>
+                                            <div className="flex items-center gap-3">
+                                                <Mountain size={14} className="text-gray-400" />
+                                                <span className="font-body text-sm text-gray-300">{coffee.altitude}</span>
+                                            </div>
+                                            <div className="flex items-center gap-3">
+                                                <Leaf size={14} className="text-gray-400" />
+                                                <span className="font-body text-sm text-gray-300">{coffee.variety}</span>
+                                            </div>
+                                            <div className="flex items-center gap-3">
+                                                <Beaker size={14} className="text-gray-400" />
+                                                <span className="font-body text-sm text-gray-300">{coffee.process}</span>
+                                            </div>
+                                        </div>
+
+                                        {/* Sensory Notes */}
+                                        <div className="mb-8">
+                                            <p className="font-body text-[10px] text-gray-500 mb-3 uppercase tracking-wider">Notas Sensoriais</p>
+                                            <div className="flex flex-wrap gap-2">
+                                                {coffee.notes.map((note) => (
+                                                    <span
+                                                        key={note}
+                                                        className={`font-body text-xs font-medium px-2 py-1 rounded-sm ${theme.lightBg} ${theme.text}`}
+                                                    >
+                                                        {note}
+                                                    </span>
+                                                ))}
+                                            </div>
                                         </div>
                                     </div>
 
@@ -122,7 +124,7 @@ const ProductsShowcaseSB = () => {
                                         </div>
 
                                         <a
-                                            href="https://wa.me/5500000000000"
+                                            href="https://wa.me/5527999823382"
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className="block w-full text-center font-body text-sm font-medium bg-serra-green text-white py-3 rounded-[4px] hover:opacity-90 transition-opacity"

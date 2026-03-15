@@ -4,7 +4,7 @@ import logoWatermark from "@/assets/logo-pe-de-serra 1.png";
 import logo from "@/assets/logo-pe-de-serra.png";
 const HeroSectionSB = () => {
     const scrollToPricing = () => {
-        document.getElementById("pricing-section")?.scrollIntoView({ behavior: "smooth" });
+        document.getElementById("products-showcase")?.scrollIntoView({ behavior: "smooth" });
     };
 
     return (

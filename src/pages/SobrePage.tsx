@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import BackToHome from "@/components/BackToHome";
 import fabioPreparo from "@/assets/fabio_preparo.jpeg";
 import heroFarm from "@/assets/hero-farm.jpg";
 
@@ -25,7 +26,7 @@ const SobrePage = () => {
         >
           <div className="absolute inset-0 bg-serra-black/70" />
         </div>
-        <div className="relative z-10 max-w-7xl mx-auto text-center">
+        <div className="relative z-10 max-w-7xl mx-auto text-center relative px-6 md:px-0">
           <p className="font-body text-serra-gold text-sm uppercase tracking-[0.3em] mb-4">
             Nossa História
           </p>
@@ -35,6 +36,9 @@ const SobrePage = () => {
           <p className="font-body text-primary-foreground/70 max-w-xl mx-auto">
             Nascemos do respeito à terra e da busca pelo café perfeito. Conheça a jornada que traz a alma das montanhas até você.
           </p>
+          <div className="mt-8">
+            <BackToHome variant="light" />
+          </div>
         </div>
       </section>
 
@@ -50,16 +54,16 @@ const SobrePage = () => {
               O Início
             </p>
             <h2 className="font-script text-5xl text-foreground mb-8">
-              Fábio, Barista & Mestre de Torra
+              Fábio Campos, Barista & Mestre de Torra
             </h2>
             <p className="font-body text-muted-foreground leading-relaxed mb-6">
-              A Pé de Serra nasceu da paixão do Fábio pelo café. Como Barista certificado e Mestre de Torra, ele iniciou sua jornada percorrendo as montanhas de Minas Gerais e do Espírito Santo para selecionar grãos diretamente de pequenos produtores familiares.
+              A Pé de Serra nasceu da paixão do Fábio Campos pelo café. Como Barista certificado e Mestre de Torra, ele iniciou sua jornada percorrendo as montanhas de Minas Gerais e do Espírito Santo para selecionar grãos diretamente de pequenos produtores familiares.
             </p>
             <p className="font-body text-muted-foreground leading-relaxed mb-6">
               O nome "Pé de Serra" é uma homenagem às terras altas onde os melhores cafés crescem. É no encontro do microclima do Caparaó e das Matas de Minas que a altitude e o cuidado manual se unem para criar grãos de qualidade excepcional.
             </p>
             <p className="font-body text-muted-foreground leading-relaxed">
-              Cada lote é pessoalmente selecionado e provado pelo Fábio através de rigorosas sessões de cupping. Esse compromisso técnico garante que apenas cafés com pontuação acima de 85 pontos SCA — o padrão de excelência internacional — cheguem até o seu ritual diário.
+              Cada lote é pessoalmente selecionado e provado pelo Fábio Campos através de rigorosas sessões de cupping. Esse compromisso técnico garante que apenas cafés com pontuação acima de 85 pontos SCA — o padrão de excelência internacional — cheguem até o seu ritual diário.
             </p>
           </motion.div>
 
@@ -72,7 +76,7 @@ const SobrePage = () => {
             <div className="relative overflow-hidden rounded-sm">
               <img
                 src={fabioPreparo}
-                alt="Fábio preparando café"
+                alt="Fábio Campos preparando café"
                 className="w-full h-[500px] object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-serra-black/40 via-transparent to-transparent pointer-events-none" />
@@ -129,7 +133,7 @@ const SobrePage = () => {
             Pronto para experimentar?
           </h2>
           <a
-            href="https://wa.me/5500000000000"
+            href="https://wa.me/5527999823382"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block font-body text-sm uppercase tracking-widest bg-serra-green text-primary-foreground px-10 py-4 hover:bg-serra-gold hover:text-serra-black transition-all duration-300"

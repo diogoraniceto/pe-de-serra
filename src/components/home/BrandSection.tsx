@@ -4,7 +4,7 @@ import fabioCafe from "@/assets/fabio-cafe.png";
 
 const BrandSection = () => {
   return (
-    <section className="bg-serra-black py-32 px-6">
+    <section className="bg-serra-black py-32 px-6 overflow-hidden">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         <motion.div
           initial={{ opacity: 0, x: -40 }}
@@ -22,7 +22,7 @@ const BrandSection = () => {
             Honramos a jornada de cada grão. Do Caparaó às Matas de Minas, selecionamos apenas o que a altitude e o cuidado artesanal podem criar.
           </p>
           <p className="font-body text-primary-foreground/80 leading-relaxed mb-10 text-lg">
-            Nossa torra artesanal é cuidadosamente conduzida por Fábio, barista e especialista em torra, que busca revelar o melhor de cada grão — preservando suas notas sensoriais únicas e a identidade da sua origem.
+            Nossa torra artesanal é cuidadosamente conduzida por Fábio Campos, barista e especialista em torra, que busca revelar o melhor de cada grão — preservando suas notas sensoriais únicas e a identidade da sua origem.
           </p>
           <Link
             to="/sobre"

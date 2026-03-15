@@ -10,7 +10,7 @@ const colorClasses = {
 
 const PricingSection = () => {
   return (
-    <section className="bg-background py-32 px-6">
+    <section className="bg-background py-32 px-6 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -39,8 +39,10 @@ const PricingSection = () => {
               {/* Color indicator */}
               <div className={`h-2 ${colorClasses[coffee.color]}`} />
 
-              <div className="p-6">
-                <p className="font-body text-xs uppercase tracking-wider text-serra-gold mb-1">
+              <div className="p-6 h-full flex flex-col">
+                <div className="flex-1">
+                  <p className="font-body text-xs uppercase tracking-wider text-serra-gold mb-1">
+
                   {coffee.region}
                 </p>
                 <p className="font-body text-[10px] uppercase tracking-wider text-muted-foreground mb-2">
@@ -67,7 +69,8 @@ const PricingSection = () => {
                     ★ {coffee.score} pts
                   </p>
                 )}
-                <div className="space-y-2 mb-6">
+                </div>
+                <div className="space-y-2 mb-6 mt-auto">
                   {coffee.weights.map((w) => (
                     <div key={w.weight} className="flex justify-between items-center">
                       <span className="font-body text-sm text-muted-foreground">{w.weight}</span>
@@ -76,7 +79,7 @@ const PricingSection = () => {
                   ))}
                 </div>
                 <a
-                  href="https://wa.me/5500000000000"
+                  href="https://wa.me/5527999823382"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block text-center font-body text-xs uppercase tracking-widest bg-serra-green text-primary-foreground py-3 hover:bg-serra-gold hover:text-serra-black transition-all duration-300"

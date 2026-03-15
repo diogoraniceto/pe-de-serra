@@ -38,7 +38,7 @@ const GuideSectionSB = () => {
                             Da escolha do grão <br />ao ponto da torra
                         </h2>
                         <p className="text-gray-400 font-body text-lg leading-relaxed">
-                            Fábio, barista e mestre de torra, seleciona pessoalmente cada lote junto a produtores familiares do Caparaó e Matas de Minas. Ele prova, aprova e torra sob demanda — para que você receba café fresco, com rastreabilidade da fazenda à sua mesa.
+                            Fábio Campos, barista e mestre de torra, seleciona pessoalmente cada lote junto a produtores familiares do Caparaó e Matas de Minas. Ele prova, aprova e torra sob demanda — para que você receba café fresco, com rastreabilidade da fazenda à sua mesa.
                         </p>
                         <ul className="space-y-4 pt-4">
                             <li className="flex items-center gap-4 text-gray-300 font-body">
@@ -47,7 +47,7 @@ const GuideSectionSB = () => {
                             </li>
                             <li className="flex items-center gap-4 text-gray-300 font-body">
                                 <Award className="text-serra-gold shrink-0" size={24} />
-                                <span>Grãos acima de 85 pontos SCA — cupping aprovado pelo Fábio.</span>
+                                <span>Grãos acima de 85 pontos SCA — cupping aprovado pelo Fábio Campos.</span>
                             </li>
                         </ul>
                     </motion.div>

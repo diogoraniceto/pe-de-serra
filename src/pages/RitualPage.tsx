@@ -4,6 +4,7 @@ import { Clock, Droplets, Flame, Timer, Coffee, Scale, CircleDot } from "lucide-
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import BackToHome from "@/components/BackToHome";
 
 const steps = [
     {
@@ -11,7 +12,7 @@ const steps = [
         title: "Água",
         icon: <Droplets className="w-6 h-6" />,
         description:
-            "Use sempre água filtrada ou mineral. 98% do café é água — ela influencia diretamente o sabor da sua bebida. Nunca use água fervendo; o ideal é entre 92°C e 96°C.",
+            "Use sempre água filtrada ou mineral. 98% do café é água — ela influencia diretamente o sabor da sua bebida. A tempratura ideal é entre 92°C e 96°C.",
         detail: "Filtrada ou mineral",
     },
     {
@@ -53,7 +54,7 @@ const tips = [
         icon: <Flame className="w-5 h-5 text-serra-gold" />,
         label: "Temperatura da Água",
         value: "92°C – 96°C",
-        note: "Nunca use água fervendo",
+        note: "O ideal é entre 92°C e 96°C",
     },
     {
         icon: <Scale className="w-5 h-5 text-serra-gold" />,
@@ -77,7 +78,7 @@ const RitualPage = () => {
             {/* Hero */}
             <section className="relative pt-40 pb-24 px-6 overflow-hidden bg-serra-black">
                 <div className="absolute inset-0 bg-gradient-to-b from-serra-black via-serra-green/20 to-serra-black" />
-                <div className="relative z-10 max-w-4xl mx-auto text-center">
+                <div className="relative z-10 max-w-4xl mx-auto text-center relative">
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -102,6 +103,14 @@ const RitualPage = () => {
                     >
                         A perfeição do grão encontra o seu momento de extração.
                     </motion.p>
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.6 }}
+                        className="mt-10"
+                    >
+                        <BackToHome variant="light" />
+                    </motion.div>
                 </div>
             </section>
 
@@ -242,7 +251,7 @@ const RitualPage = () => {
                             Dicas de Mestre
                         </p>
                         <h2 className="font-blackletter text-4xl md:text-5xl text-foreground">
-                            Os parâmetros do Fábio
+                            Os parâmetros do Fábio Campos
                         </h2>
                     </motion.div>
 

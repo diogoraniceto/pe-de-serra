@@ -10,7 +10,7 @@ import RoastingSection from "@/components/home/RoastingSection";
 import PricingSection from "@/components/home/PricingSection";
 const Index = () => {
   return (
-    <div className="font-body">
+    <div className="font-body overflow-x-hidden">
       <Navbar />
       <main>
         <HeroSection />

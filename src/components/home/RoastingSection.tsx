@@ -33,7 +33,7 @@ const RoastingSection = () => {
             Arte da torra
           </h2>
           <p className="font-body text-primary-foreground/80 leading-relaxed mb-6">
-            Fábio, nosso Barista e Mestre de Torra, conduz o processo com maestria. Cada lote é cuidadosamente desenhado e torrado para revelar o potencial máximo das características únicas de cada origem — da acidez cítrica e doçura de mel do Caparaó ao corpo achocolatado e caramelado de Matas de Minas.
+            Fábio Campos, nosso Barista e Mestre de Torra, conduz o processo com maestria. Cada lote é cuidadosamente desenhado e torrado para revelar o potencial máximo das características únicas de cada origem — da acidez cítrica e doçura de mel do Caparaó ao corpo achocolatado e caramelado de Matas de Minas.
           </p>
           <p className="font-body text-primary-foreground/80 leading-relaxed mb-8">
             A união entre o rigor do cupping (degustação técnica), que garante grãos sempre acima de 85 pontos, e a torra artesanal sob demanda cria a ponte perfeita. É o intervalo exato entre o cuidado do mestre e o seu ritual da xícara perfeita.

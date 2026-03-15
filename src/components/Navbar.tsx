@@ -18,8 +18,10 @@ const Navbar = () => {
   const location = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -37,9 +39,13 @@ const Navbar = () => {
 
   return (
     <nav
-      className="fixed top-0 left-0 right-0 z-50 bg-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 pointer-events-none ${
+        scrolled 
+          ? "bg-serra-black/80 backdrop-blur-lg border-b border-white/5 py-1" 
+          : "bg-transparent py-3"
+      }`}
     >
-      <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between pointer-events-auto">
         <Link to="/" className="flex items-center">
           <img
             src={logo}
@@ -68,7 +74,7 @@ const Navbar = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="fixed inset-0 bg-serra-black/60 backdrop-blur-sm z-[60]"
+              className="fixed inset-0 bg-serra-black/60 backdrop-blur-sm z-[60] pointer-events-auto"
               onClick={() => setIsOpen(false)}
             />
 
@@ -78,7 +84,7 @@ const Navbar = () => {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "tween", duration: 0.4, ease: "easeOut" }}
-              className="fixed top-0 right-0 bottom-0 w-[300px] h-[100dvh] bg-serra-black/60 backdrop-blur-xl border-l border-white/10 z-[70] shadow-2xl flex flex-col"
+              className="fixed top-0 right-0 bottom-0 w-[300px] h-[100dvh] bg-serra-black/60 backdrop-blur-xl border-l border-white/10 z-[70] shadow-2xl flex flex-col pointer-events-auto"
             >
               <div className="flex justify-end p-6">
                 <button
