@@ -24,6 +24,8 @@ const FeaturedCoffees = () => {
   const currentIndex = selectedId ? coffees.findIndex(c => c.id === selectedId) : -1;
   const sectionRef = useRef<HTMLElement>(null);
   const triggerRef = useRef<HTMLDivElement>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [scrollIndex, setScrollIndex] = useState(0);
 
   // Trigger opening when grid is 100% visible (1.0)
   // Plus a 300px offset from the bottom (margin) to delay it further
@@ -35,7 +37,8 @@ const FeaturedCoffees = () => {
   const isSectionVisible = useInView(sectionRef, { once: false, amount: 0.1 });
 
   useEffect(() => {
-    if (isTriggerVisible && !selectedId && !hasAutoOpened) {
+    // Só abre automaticamente no Desktop
+    if (isTriggerVisible && !selectedId && !hasAutoOpened && !isMobile) {
       setSelectedId(coffees[0].id);
       setHasAutoOpened(true);
     }
@@ -68,9 +71,19 @@ const FeaturedCoffees = () => {
   };
 
   const handleViewportEnter = () => {
-    if (!selectedId && !hasAutoOpened) {
+    if (!selectedId && !hasAutoOpened && !isMobile) {
       setSelectedId(coffees[0].id);
       setHasAutoOpened(true);
+    }
+  };
+
+  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    const container = e.currentTarget;
+    const scrollPos = container.scrollLeft;
+    const itemWidth = 176; // 160px width + 16px gap
+    const index = Math.round(scrollPos / itemWidth);
+    if (index !== scrollIndex) {
+      setScrollIndex(index);
     }
   };
 
@@ -184,11 +197,14 @@ const FeaturedCoffees = () => {
 
               /* Mobile: Horizontal scroll */
               <div ref={triggerRef}>
-                <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 -mx-6 px-6 scrollbar-hide">
+                <div 
+                  ref={scrollRef}
+                  onScroll={handleScroll}
+                  className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 -mx-6 px-6 scrollbar-hide">
                   {coffees.map((coffee) => {
                     const isSelected = coffee.id === selectedId;
                     return (
-                      <div key={coffee.id} className="snap-center shrink-0 w-[160px] min-h-[220px] flex justify-center items-center">
+                      <div key={coffee.id} className="snap-center shrink-0 w-[70vw] max-w-[200px] min-h-[220px] flex justify-center items-center">
                         {!isSelected && (
                           <motion.div
                             layoutId={`coffee-card-${coffee.id}`}
@@ -209,11 +225,24 @@ const FeaturedCoffees = () => {
                             <p className="font-blackletter text-base text-serra-offwhite mt-2 text-center">
                               {coffee.name}
                             </p>
+                            <span className="mt-2 px-4 py-1.5 bg-serra-gold/10 border border-serra-gold/30 text-serra-gold text-[10px] uppercase tracking-widest font-body rounded-full">
+                              Ver detalhes
+                            </span>
                           </motion.div>
                         )}
                       </div>
                     );
                   })}
+                </div>
+
+                {/* Mobile scroll indicators */}
+                <div className="flex justify-center gap-2 mt-4 mb-8">
+                  {coffees.map((_, i) => (
+                    <div 
+                      key={i} 
+                      className={`h-1.5 transition-all duration-300 rounded-full ${i === scrollIndex ? "w-6 bg-serra-gold" : "w-1.5 bg-serra-gold/20"}`}
+                    />
+                  ))}
                 </div>
 
                 {/* Mobile Detail Panel */}
