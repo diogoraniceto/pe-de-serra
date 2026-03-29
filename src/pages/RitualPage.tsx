@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Clock, Droplets, Flame, Timer, Coffee, Scale, CircleDot } from "lucide-react";
@@ -5,6 +6,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import BackToHome from "@/components/BackToHome";
+import chaleiraImg from "@/assets/chaleira-gooseneck.png";
+import filtroHarioImg from "@/assets/filtro-hario-v60.png";
 
 const steps = [
     {
@@ -70,7 +73,78 @@ const tips = [
     },
 ];
 
+interface ProductCardProps {
+    image: string;
+    imageClass?: string;
+    imageBg?: string;
+    title: string;
+    tags: string[];
+    description: React.ReactNode;
+    priceLabel: string;
+    price: string;
+    waLink: string;
+    delay?: number;
+}
+
+const ProductCard = ({ image, imageClass, imageBg, title, tags, description, priceLabel, price, waLink, delay = 0 }: ProductCardProps) => {
+    const [open, setOpen] = useState(false);
+    return (
+        <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false }}
+            transition={{ duration: 0.8, delay }}
+            className="flex flex-col border border-border hover:border-serra-gold/40 transition-colors group"
+        >
+            <div className={`relative overflow-hidden ${imageBg ?? ""}`}>
+                <img src={image} alt={title} className={`w-full h-[280px] transition-transform duration-700 group-hover:scale-105 ${imageClass ?? "object-cover object-center"}`} />
+                {!imageBg && <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />}
+            </div>
+            <div className="flex flex-col flex-1 p-6 gap-4">
+                <div>
+                    <h3 className="font-blackletter text-2xl text-foreground mb-2">{title}</h3>
+                    <div className="flex flex-wrap gap-2 mb-3">
+                        {tags.map((tag) => (
+                            <span key={tag} className="font-body text-xs uppercase tracking-widest text-serra-gold border border-serra-gold/30 px-3 py-1 rounded-full">{tag}</span>
+                        ))}
+                    </div>
+                    {open && <div className="mt-2 text-sm">{description}</div>}
+                    <button
+                        onClick={() => setOpen(!open)}
+                        className="mt-2 font-body text-xs uppercase tracking-widest text-serra-gold hover:text-foreground transition-colors"
+                    >
+                        {open ? "Ver menos ↑" : "Ver mais ↓"}
+                    </button>
+                </div>
+                <div className="border-t border-border pt-4 flex items-center justify-between mt-auto">
+                    <div>
+                        <p className="font-body text-xs text-muted-foreground uppercase tracking-widest mb-1">{priceLabel}</p>
+                        <p className="font-blackletter text-3xl text-foreground">{price}</p>
+                    </div>
+                    <a
+                        href={waLink}
+                        target="_blank" rel="noopener noreferrer"
+                        className="font-body text-sm uppercase tracking-widest bg-serra-green text-primary-foreground px-6 py-3 hover:bg-serra-gold hover:text-serra-black transition-all duration-300"
+                    >
+                        Pedir →
+                    </a>
+                </div>
+            </div>
+        </motion.div>
+    );
+};
+
 const RitualPage = () => {
+    useEffect(() => {
+        const hash = window.location.hash;
+        if (hash) {
+            const el = document.querySelector(hash);
+            if (el) {
+                setTimeout(() => el.scrollIntoView({ behavior: "smooth", block: "start" }), 100);
+            }
+        }
+    }, []);
+
     return (
         <div className="font-body">
             <Navbar />
@@ -151,7 +225,7 @@ const RitualPage = () => {
                                     { day: "Dia 1-2", label: "Desgaseificação", desc: "O CO₂ está intenso. O café ainda está se estabilizando." },
                                     { day: "Dia 3-4", label: "Maturação", desc: "Os sabores começam a se abrir. Aromas mais definidos." },
                                     { day: "Dia 5-7", label: "Auge Sensorial", desc: "Equilíbrio perfeito entre acidez, doçura e corpo.", highlight: true },
-                                    { day: "Dia 8+", label: "Declínio gradual", desc: "Ainda bom, mas já perdendo nuances sutis." },
+                                    { day: "1 Mês+", label: "Declínio gradual", desc: "Ainda bom, mas já perdendo nuances sutis." },
                                 ].map((item, i) => (
                                     <motion.div
                                         key={i}
@@ -237,6 +311,98 @@ const RitualPage = () => {
                     </div>
                 </div>
             </section>
+
+            {/* Acessórios */}
+            <section id="hario" className="bg-background py-28 px-6 border-t border-border">
+                <div className="max-w-5xl mx-auto">
+
+                    {/* Header */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: false }}
+                        className="text-center mb-16"
+                    >
+                        <p className="font-body text-serra-gold text-sm uppercase tracking-[0.3em] mb-4">
+                            Os Instrumentos
+                        </p>
+                        <h2 className="font-blackletter text-4xl md:text-5xl text-foreground mb-4">
+                            Acessórios Curados
+                        </h2>
+                        <p className="font-body text-muted-foreground text-lg max-w-xl mx-auto">
+                            Selecionados pelo Fábio Campos para que cada detalhe do seu preparo seja perfeito.
+                        </p>
+                    </motion.div>
+
+                    {/* Product cards */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+                        {/* Kit V60 Hario */}
+                        <ProductCard
+                            image="https://images.unsplash.com/photo-1442512595331-e89e73853f31?q=80&w=2070&auto=format&fit=crop"
+                            title="Kit V60 Hario"
+                            tags={["Dripper V60", "Servidor de Vidro", "Suporte"]}
+                            description={<>
+                                <p className="font-body text-muted-foreground leading-relaxed mb-2">
+                                    Extração de Alta Qualidade: Devido ao formato cônico de 60º, ranhuras espirais internas e uma única abertura grande, o fluxo de água é rápido e consistente, evitando o amargor.
+                                </p>
+                                <p className="font-body text-muted-foreground leading-relaxed">
+                                    Bebida Limpa e Aromatizada: As ranhuras internas impedem que o papel cole, resultando em um café sem resíduos, realçando notas doces, frutadas e florais.
+                                </p>
+                            </>}
+                            priceLabel="Kit completo"
+                            price="R$ 195,00"
+                            waLink="https://wa.me/5527999823382?text=Ol%C3%A1%21%20Gostaria%20de%20saber%20mais%20sobre%20o%20Kit%20V60%20Hario."
+                            delay={0}
+                        />
+
+                        {/* Chaleira Gooseneck */}
+                        <ProductCard
+                            image={chaleiraImg}
+                            title="Chaleira Gooseneck"
+                            tags={["Aço Inox", "Termômetro Embutido", "Bico Preciso", "1 Litro"]}
+                            description={<>
+                                <p className="font-body text-muted-foreground leading-relaxed mb-2">
+                                    A principal vantagem da chaleira bico de ganso é o controle preciso e contínuo do fluxo de água. Seu bico longo e fino garante extração uniforme e um café mais aromático.
+                                </p>
+                                <p className="font-body text-muted-foreground leading-relaxed mb-1">
+                                    <strong className="text-foreground">Controle Total do Fluxo:</strong> Despejar água lenta e constante, essencial para cafés especiais.
+                                </p>
+                                <p className="font-body text-muted-foreground leading-relaxed">
+                                    <strong className="text-foreground">Precisão na Extração:</strong> Evita sobre-extração ou sub-extração, garantindo bebida equilibrada.
+                                </p>
+                            </>}
+                            priceLabel="Chaleira completa"
+                            price="R$ 165,00"
+                            waLink="https://wa.me/5527999823382?text=Ol%C3%A1%21%20Gostaria%20de%20saber%20mais%20sobre%20a%20Chaleira%20Gooseneck."
+                            delay={0.15}
+                        />
+
+                        {/* Filtro Hario V60 */}
+                        <ProductCard
+                            image={filtroHarioImg}
+                            imageClass="object-contain object-center p-4"
+                            imageBg="bg-white"
+                            title="Filtro Hario V60-02"
+                            tags={["Papel Branco", "V60-02", "100 Unidades", "FSC"]}
+                            description={<>
+                                <p className="font-body text-muted-foreground leading-relaxed mb-2">
+                                    Filtro de papel branco cônico de alta qualidade, desenvolvido especialmente para o dripper V60. Proporciona filtragem limpa, realçando notas frutadas, florais e doces.
+                                </p>
+                                <p className="font-body text-muted-foreground leading-relaxed">
+                                    <strong className="text-foreground">100 unidades</strong> — compatível com drippers V60 tamanho 02 (1 a 4 xícaras). Certificado FSC.
+                                </p>
+                            </>}
+                            priceLabel="100 filtros"
+                            price="R$ 70,00"
+                            waLink="https://wa.me/5527999823382?text=Ol%C3%A1%21%20Gostaria%20de%20saber%20mais%20sobre%20o%20Filtro%20Hario%20V60-02."
+                            delay={0.3}
+                        />
+
+                    </div>
+                </div>
+            </section>
+
 
             {/* Dicas de Mestre */}
             <section className="bg-background py-28 px-6">

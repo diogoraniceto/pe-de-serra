@@ -22,8 +22,8 @@ export interface Coffee {
 export const coffees: Coffee[] = [
   {
     id: "1",
-    name: "Catucai 44 IAC",
-    variety: "Catucai 44 IAC",
+    name: "Cítrico das Alturas",
+    variety: "Cítrico das Alturas",
     region: "Iúna (ES)",
     producer: "Emílio Horst",
     process: "Natural",
@@ -40,8 +40,8 @@ export const coffees: Coffee[] = [
   },
   {
     id: "2",
-    name: "Catucai Amarelo 785-15",
-    variety: "Catucai Amarelo 785-15",
+    name: "Mel Amarelo",
+    variety: "Mel Amarelo",
     region: "Iúna (ES)",
     producer: "Emílio Horst",
     process: "Natural",
@@ -58,14 +58,14 @@ export const coffees: Coffee[] = [
   },
   {
     id: "3",
-    name: "Arara",
-    variety: "Arara",
+    name: "Aveludado de Minas",
+    variety: "Aveludado de Minas",
     region: "Manhuaçu (MG)",
     producer: "Eduardo Cerqueira",
     process: "Cereja Descascado",
     altitude: "1060m",
     notes: ["Caramelo", "Chocolate", "Mel"],
-    description: "Variedade Arara com corpo aveludado e doçura equilibrada. Processamento cereja descascado que realça as notas de caramelo.",
+    description: "Aveludado de Minas com corpo aveludado e doçura equilibrada. Processamento cereja descascado que realça as notas de caramelo.",
     weights: [
       { weight: "250g", price: "R$ 50,00" },
       { weight: "500g", price: "R$ 97,00" },
@@ -76,8 +76,8 @@ export const coffees: Coffee[] = [
   },
   {
     id: "4",
-    name: "Catuaí 44",
-    variety: "Catuaí 44",
+    name: "Complexo das Nuvens",
+    variety: "Complexo das Nuvens",
     region: "Forquilha do Rio (ES)",
     producer: "Gabriel Protázio",
     process: "Cereja Descascado",

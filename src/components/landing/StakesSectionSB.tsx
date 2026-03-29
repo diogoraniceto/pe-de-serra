@@ -114,20 +114,20 @@ const StakesSectionSB = () => {
 
                                 <div className="space-y-3 w-full mb-10">
                                 <div className="flex justify-between items-center text-sm font-body">
-                                    <span className="text-white">Catucai Am.</span>
-                                    <span className="text-serra-gold font-bold">R$ 42,00</span>
+                                    <span className="text-white">Mel Amarelo</span>
+                                    <span className="text-serra-gold font-bold">R$ 55,00</span>
                                 </div>
                                 <div className="flex justify-between items-center text-sm font-body">
-                                    <span className="text-white">Catucai 44</span>
-                                    <span className="text-serra-gold font-bold">R$ 45,00</span>
+                                    <span className="text-white">Cítrico das Alturas</span>
+                                    <span className="text-serra-gold font-bold">R$ 50,00</span>
                                 </div>
                                 <div className="flex justify-between items-center text-sm font-body">
-                                    <span className="text-white">Arara</span>
-                                    <span className="text-serra-gold font-bold">R$ 48,00</span>
+                                    <span className="text-white">Aveludado de Minas</span>
+                                    <span className="text-serra-gold font-bold">R$ 50,00</span>
                                 </div>
                                 <div className="flex justify-between items-center text-sm font-body">
-                                    <span className="text-white">Catuaí 44</span>
-                                    <span className="text-serra-gold font-bold">R$ 52,00</span>
+                                    <span className="text-white">Complexo das Nuvens</span>
+                                    <span className="text-serra-gold font-bold">R$ 55,00</span>
                                 </div>
                                 </div>
                             </div>
@@ -161,20 +161,20 @@ const StakesSectionSB = () => {
 
                                 <div className="space-y-3 w-full mb-10">
                                 <div className="flex justify-between items-center text-sm font-body">
-                                    <span className="text-gray-300">Catucai Am.</span>
-                                    <span className="text-serra-gold">R$ 78,00</span>
+                                    <span className="text-gray-300">Mel Amarelo</span>
+                                    <span className="text-gray-500 italic">Esgotado</span>
                                 </div>
                                 <div className="flex justify-between items-center text-sm font-body">
-                                    <span className="text-gray-300">Catucai 44</span>
-                                    <span className="text-serra-gold">R$ 82,00</span>
+                                    <span className="text-gray-300">Cítrico das Alturas</span>
+                                    <span className="text-serra-gold">R$ 97,00</span>
                                 </div>
                                 <div className="flex justify-between items-center text-sm font-body">
-                                    <span className="text-gray-300">Arara</span>
-                                    <span className="text-serra-gold">R$ 88,00</span>
+                                    <span className="text-gray-300">Aveludado de Minas</span>
+                                    <span className="text-serra-gold">R$ 97,00</span>
                                 </div>
                                 <div className="flex justify-between items-center text-sm font-body">
-                                    <span className="text-gray-300">Catuaí 44</span>
-                                    <span className="text-serra-gold">R$ 95,00</span>
+                                    <span className="text-gray-300">Complexo das Nuvens</span>
+                                    <span className="text-gray-500 italic">Esgotado</span>
                                 </div>
                                 </div>
                             </div>

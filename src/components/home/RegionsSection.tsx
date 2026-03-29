@@ -7,7 +7,7 @@ const regions = [
   {
     name: "Caparaó",
     image: regionCaparao,
-    description: "Altitude que beira as nuvens e o microclima único dão vida a cafés com acidez brilhante e cítrica, revelando doçura de mel e caldo de cana com o brilho das frutas amarelas.",
+    description: "Altitude que beira as nuvens e o microclima único dão vida a cafés com acidez brilhante e cítrica, revelando doçura de mel e rapadura com o brilho das frutas.",
     altitude: "1000m - 1500m",
     terroir: "Clima de Altitude"
   },

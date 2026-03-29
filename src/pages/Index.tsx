@@ -8,6 +8,7 @@ import RegionsSection from "@/components/home/RegionsSection";
 import ProducerSpotlight from "@/components/home/ProducerSpotlight";
 import RoastingSection from "@/components/home/RoastingSection";
 import PricingSection from "@/components/home/PricingSection";
+import HarioStripSection from "@/components/home/HarioStripSection";
 const Index = () => {
   return (
     <div className="font-body overflow-x-hidden">
@@ -19,6 +20,7 @@ const Index = () => {
         <ProducerSpotlight />
         <RegionsSection />
         <RoastingSection />
+        <HarioStripSection />
         <PricingSection />
       </main>
       <Footer />
