@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Clock, Droplets, Flame, Timer, Coffee, Scale, CircleDot } from "lucide-react";
+import { Clock, Droplets, Flame, Coffee, Scale, CircleDot } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import BackToHome from "@/components/BackToHome";
 import chaleiraImg from "@/assets/chaleira-gooseneck.png";
 import filtroHarioImg from "@/assets/filtro-hario-v60.png";
+import v6RealImg from "@/assets/v6 real.jpg";
 
 const steps = [
     {
@@ -74,9 +75,10 @@ const tips = [
 ];
 
 interface ProductCardProps {
-    image: string;
+    image?: string;
     imageClass?: string;
     imageBg?: string;
+    customImage?: React.ReactNode;
     title: string;
     tags: string[];
     description: React.ReactNode;
@@ -86,7 +88,7 @@ interface ProductCardProps {
     delay?: number;
 }
 
-const ProductCard = ({ image, imageClass, imageBg, title, tags, description, priceLabel, price, waLink, delay = 0 }: ProductCardProps) => {
+const ProductCard = ({ image, imageClass, imageBg, customImage, title, tags, description, priceLabel, price, waLink, delay = 0 }: ProductCardProps) => {
     const [open, setOpen] = useState(false);
     return (
         <motion.div
@@ -97,8 +99,12 @@ const ProductCard = ({ image, imageClass, imageBg, title, tags, description, pri
             className="flex flex-col border border-border hover:border-serra-gold/40 transition-colors group"
         >
             <div className={`relative overflow-hidden ${imageBg ?? ""}`}>
-                <img src={image} alt={title} className={`w-full h-[280px] transition-transform duration-700 group-hover:scale-105 ${imageClass ?? "object-cover object-center"}`} />
-                {!imageBg && <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />}
+                {customImage ?? (
+                    <>
+                        <img src={image} alt={title} className={`w-full h-[280px] transition-transform duration-700 group-hover:scale-105 ${imageClass ?? "object-cover object-center"}`} />
+                        {!imageBg && <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />}
+                    </>
+                )}
             </div>
             <div className="flex flex-col flex-1 p-6 gap-4">
                 <div>
@@ -225,7 +231,7 @@ const RitualPage = () => {
                                     { day: "Dia 1-2", label: "Desgaseificação", desc: "O CO₂ está intenso. O café ainda está se estabilizando." },
                                     { day: "Dia 3-4", label: "Maturação", desc: "Os sabores começam a se abrir. Aromas mais definidos." },
                                     { day: "Dia 5-7", label: "Auge Sensorial", desc: "Equilíbrio perfeito entre acidez, doçura e corpo.", highlight: true },
-                                    { day: "1 Mês+", label: "Declínio gradual", desc: "Ainda bom, mas já perdendo nuances sutis." },
+                                    { day: "2,5 Meses+", label: "Declínio gradual", desc: "Ainda bom, mas já perdendo nuances sutis." },
                                 ].map((item, i) => (
                                     <motion.div
                                         key={i}
@@ -339,7 +345,9 @@ const RitualPage = () => {
 
                         {/* Kit V60 Hario */}
                         <ProductCard
-                            image="https://images.unsplash.com/photo-1442512595331-e89e73853f31?q=80&w=2070&auto=format&fit=crop"
+                            image={v6RealImg}
+                            imageClass="object-contain object-center p-4"
+                            imageBg="bg-white"
                             title="Kit V60 Hario"
                             tags={["Dripper V60", "Servidor de Vidro", "Suporte"]}
                             description={<>
