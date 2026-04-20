@@ -5,8 +5,8 @@ import produtorEFabio from "@/assets/produtor_e_fabio.jpeg";
 import produtoresNovo from "@/assets/produtores_novo_sem_zoom.jpeg";
 
 const photos = [
-  { src: produtorEFabio, alt: "Produtor e Fábio Campos" },
-  { src: produtoresNovo, alt: "Família produtora parceira" },
+  { src: produtorEFabio, alt: "Produtor e Fábio Campos", filter: "grayscale contrast-125" },
+  { src: produtoresNovo, alt: "Família produtora parceira", filter: "grayscale contrast-110 brightness-125" },
 ];
 
 const ProducerSpotlight = () => {
@@ -42,7 +42,7 @@ const ProducerSpotlight = () => {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -40 }}
               transition={{ duration: 0.5 }}
-              className="w-full h-full object-cover grayscale contrast-125"
+              className={`w-full h-full object-cover ${photos[current].filter}`}
             />
           </AnimatePresence>
           {/* Dots */}
