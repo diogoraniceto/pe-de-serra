@@ -114,7 +114,7 @@ const StakesSectionSB = () => {
 
                                 <div className="space-y-3 w-full mb-10">
                                 <div className="flex justify-between items-center text-sm font-body">
-                                    <span className="text-white">Mel Amarelo</span>
+                                    <span className="text-white">Mel da Montanha</span>
                                     <span className="text-serra-gold font-bold">R$ 55,00</span>
                                 </div>
                                 <div className="flex justify-between items-center text-sm font-body">
@@ -161,7 +161,7 @@ const StakesSectionSB = () => {
 
                                 <div className="space-y-3 w-full mb-10">
                                 <div className="flex justify-between items-center text-sm font-body">
-                                    <span className="text-gray-300">Mel Amarelo</span>
+                                    <span className="text-gray-300">Mel da Montanha</span>
                                     <span className="text-gray-500 italic">Esgotado</span>
                                 </div>
                                 <div className="flex justify-between items-center text-sm font-body">

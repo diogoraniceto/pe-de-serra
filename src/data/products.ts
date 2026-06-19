@@ -40,8 +40,8 @@ export const coffees: Coffee[] = [
   },
   {
     id: "2",
-    name: "Mel Amarelo",
-    variety: "Mel Amarelo",
+    name: "Mel da Montanha",
+    variety: "Mel da Montanha",
     region: "Iúna (ES)",
     producer: "Emílio Horst",
     process: "Natural",

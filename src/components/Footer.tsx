@@ -44,7 +44,7 @@ const Footer = () => {
                 WhatsApp
               </a>
               <a
-                href="https://instagram.com/pedeserra"
+                href="https://www.instagram.com/pedeserratorradecafe/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-primary-foreground/70 hover:text-serra-gold transition-colors text-sm font-body"
