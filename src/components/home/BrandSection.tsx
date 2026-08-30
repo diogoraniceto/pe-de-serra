@@ -37,12 +37,12 @@ const BrandSection = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: false }}
           transition={{ duration: 0.8 }}
-          className="relative h-[600px] w-full"
+          className="relative w-full aspect-[4/5] max-h-[70vh] lg:aspect-auto lg:max-h-none lg:h-[600px]"
         >
           <img
             src={fabioCafe}
             alt="Barista preparando café com latte art"
-            className="w-full h-full object-cover rounded-sm"
+            className="w-full h-full object-cover object-[50%_8%] rounded-sm"
           />
         </motion.div>
       </div>

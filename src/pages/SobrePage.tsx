@@ -77,7 +77,7 @@ const SobrePage = () => {
               <img
                 src={fabioPreparo}
                 alt="Fábio Campos preparando café"
-                className="w-full h-[500px] object-cover"
+                className="w-full aspect-[3/4] max-h-[70vh] object-cover object-[50%_15%] lg:aspect-auto lg:max-h-none lg:h-[500px] lg:object-center"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-serra-black/40 via-transparent to-transparent pointer-events-none" />
             </div>
